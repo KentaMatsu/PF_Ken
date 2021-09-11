@@ -40,8 +40,8 @@
 * バイクに関するなにかしらの情報を見つけたいとき
 
 ## 設計書
- ER図:https://app.diagrams.net/#G1RV1iyCvMz-QnW0F1z7vRLteGjMv-IK2m
- テーブル定義書:https://docs.google.com/spreadsheets/d/1-3YcUdsKFtJoE-ZlVpJiZXL7M6_lHGaENyaQ3wDCons/edit#gid=972312795
+ ER図:https://app.diagrams.net/#G1RV1iyCvMz-QnW0F1z7vRLteGjMv-IK2m<br>
+ テーブル定義書:https://docs.google.com/spreadsheets/d/1-3YcUdsKFtJoE-ZlVpJiZXL7M6_lHGaENyaQ3wDCons/edit#gid=972312795<br>
  アプリケーション詳細設計:
 
 ## チャレンジ要素一覧
