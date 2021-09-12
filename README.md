@@ -42,7 +42,7 @@
 ## 設計書
  ER図:https://app.diagrams.net/#G1RV1iyCvMz-QnW0F1z7vRLteGjMv-IK2m<br>
  テーブル定義書:https://docs.google.com/spreadsheets/d/1-3YcUdsKFtJoE-ZlVpJiZXL7M6_lHGaENyaQ3wDCons/edit#gid=972312795<br>
- アプリケーション詳細設計:
+ アプリケーション詳細設計:https://docs.google.com/spreadsheets/d/18VxU9qnsA2Fc7HHQrbO5hZJPsuytAkqqNsbKeFVMry8/edit#gid=1816295513
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1uDWG5vBqNMeiZXxKAsDZjkP_QGBx8TO1cKacytLNG1g/edit#gid=0>
