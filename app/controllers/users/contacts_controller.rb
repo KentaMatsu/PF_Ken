@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class Users::ContactsController < ApplicationController
 
   # 入力画面
   def new

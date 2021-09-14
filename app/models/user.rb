@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :blog_comments, dependent: :destroy
 
 
   # 被フォロー関係を通じて参照→followed_idをフォローしているユーザー
@@ -26,7 +32,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
 
 
 

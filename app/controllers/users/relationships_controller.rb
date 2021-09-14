@@ -1,4 +1,4 @@
-class RelationshipsController < ApplicationController
+class Users::RelationshipsController < ApplicationController
 
 # フォロー機能を作成・保存・削除
   def create
