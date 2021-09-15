@@ -1,0 +1,22 @@
+<h2>投稿一覧</h2>
+<div>
+  <% @posts.each do |posts| %>
+  <div>
+    <%= link_to post_path(@post) do %>
+     画像
+    <% end %>
+  </div>
+  <div>
+    <%= posts.title %>
+  </div>
+  <div>
+    コメント数：<%= @post_comments.count %>
+  </div>
+  <div>
+    いいね：<%#= render "likes/likes", posts: posts %>
+  </div>
+  <% end %>
+</div>
+<div>
+  <%= render "users/list", user: @user %> 
+</div>
