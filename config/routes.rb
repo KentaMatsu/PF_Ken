@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope modele: :users do
+  scope module: :users do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
 
@@ -31,11 +31,11 @@ Rails.application.routes.draw do
     end
 
   end
-  
+
   namespace :admins do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
-    
+
     resources :blogs do
       resources :blog_comments, only: [:destroy]
     end
