@@ -1,2 +1,33 @@
-<h1>Post#edit</h1>
-<p>Find me in app/views/post/edit.html.erb</p>
+<div>
+  <div>
+    <h2>投稿編集画面</h2>
+  </div>
+  <%= form_with model:post, local: true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :image, "投稿画像" %></th>
+      <td><%= f.file_field :image %></td>
+      <% if @user.post_image.attached? %>
+        <%= @user.post_image.purge %>
+      <% end %>
+    </tr>
+    <tr>
+      <th><%= f.label :title, "タイトル" %></th>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :text, "説明文" %></th>
+      <td><%= f.text_field :text %></td>
+    </tr>
+  </table>
+  <div>
+    <%= link_to "マイページ", user_path %>
+    <%= f.submit '投稿する' %>
+  </div>
+  <% end %>
+  <div>
+    <%= link_to "マイページ", user_path %>
+    <%= link_to "投稿記事にもどる", post_path %>
+  </div>
+</div>
+

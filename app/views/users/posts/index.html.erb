@@ -1,2 +1,36 @@
-<h1>Post#index</h1>
-<p>Find me in app/views/post/index.html.erb</p>
+<div>
+  <div>
+    <div>
+      <h2>ユーザー投稿一覧</h2>
+    </div>
+    <div>
+      <%= link_to "投稿", new_post_path %>
+      <%# 検索フォーム %>
+    </div>
+  </div>
+  <div>
+    <% @posts.each do |post| %>
+    <div>
+      <div>
+        <%= link_to user_path(post.user) do %>
+          ユーザー画像
+        <% end %>
+      </div>
+      <div>
+        <div>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+          <% end %>
+        </div>
+        <div>
+          いいね数：<%= post.likes.count %>
+          コメント数：<%= post.post_comments.count %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div>
+    <%= render "users/list", user: @user %>
+  </div>
+<div>
