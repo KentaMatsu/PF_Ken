@@ -3,7 +3,10 @@
   <% @posts.each do |posts| %>
   <div>
     <%= link_to post_path(@post) do %>
-     画像
+     <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image %>
+      <% end %>
+      <%= posts.user.user_name %>
     <% end %>
   </div>
   <div>
@@ -13,7 +16,7 @@
     コメント数：<%= @post_comments.count %>
   </div>
   <div>
-    いいね：<%#= render "likes/likes", posts: posts %>
+    いいね：<%= render "likes/likes", posts: posts %>
   </div>
   <% end %>
 </div>

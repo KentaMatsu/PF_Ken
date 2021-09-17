@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <h2>新規スレッド作成</h2>
+  </div>
+  <%= form_with model:Chat_Room, local: true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :room_name, "スレッドタイトル" %></th>
+      <td><%= f.file_field :room_name %></td>
+    </tr>
+  </table>
+  <div>
+    <%= f.submit '作成する' %>
+  </div>
+  <% end %>
+</div>

@@ -1,4 +1,28 @@
-<h1>ChatRooms#show</h1>
-<p>Find me in app/views/chat_rooms/show.html.erb</p>
-
-
+<div>
+  <div>
+    <div>
+      <%= @chat_room.room_name %>
+    </div>
+    <div>
+      <%= @chat_room.user.user_name %>
+    </div>
+    <div>
+      <%= link_to "戻る", chat_rooms_path %>
+    </div>
+  </div>
+  <%= render "chata/chats" chat_room: @chat_room %>
+  <div>
+    <div>
+      <h5>コメント作成</h5>
+    </div>
+    <%= form_with model:Chat, local: true do |f| %>
+    <div>
+      <%= f.label :response, "コメント" %>
+      <%= f.file_field :response %>
+    </div>
+    <div>
+      <%= f.submit '作成する' %>
+    </div>
+    <% end %>
+  </div>
+</div>

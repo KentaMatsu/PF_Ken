@@ -13,7 +13,10 @@
     <div>
       <div>
         <%= link_to user_path(post.user) do %>
-          ユーザー画像
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image %>
+          <% end %>
+          <%= post.user.user_name %>
         <% end %>
       </div>
       <div>

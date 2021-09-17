@@ -11,18 +11,9 @@
     <%= @blog.text %>
   </div>
   <div>
-    <% @blog.blog_comments.each do |blog_comment| %>
-    <div>
-      <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image %>
-      <% else %>
-       <%= image_tag 'no_image.jpg' %>
-      <% end %>
-    </div>
     <div>
       <%= render "blog_comments/blog_comments", blog: @blog, blog_comment: @blog_comment %>
     </div>
-    <% end %>
   </div>
   <div>
     <%= form_with model:blog_comment, local: true do |f| %>

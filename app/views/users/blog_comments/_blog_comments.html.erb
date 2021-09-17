@@ -8,10 +8,16 @@
     <% end %>
   </div>
   <div>
-    <%= blog_comment.user.name %>
+    <%= blog_comment.user.user_name %>
   </div>
   <div>
     <%= blog_comment.comment %>
   </div>
+  <% if current_user == blog_comment.user %>
+  <div>
+    <%= link_to '削除', blog_blog_comment_path(blog_comment.blog_id, blog_comment.id) method: :delete, "data-confirm" => "本当に消しますか?" %>
+　</div>
+  <% end %>
+
 </div>
 <% end %>
