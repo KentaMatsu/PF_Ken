@@ -3,7 +3,7 @@
     <h2>掲示板</h2>
   </div>
   <div>
-    <h2>スレッド一覧</h2>
+    <h4>スレッド一覧</h4>
   </div>
   <table>
     <tr>
@@ -16,19 +16,16 @@
     <% @chat_rooms.each do |chat_room| %>
     <th>
       <td>
-        <%= link_to chat_room_path do %>
-          <% if @user.profile_image.attached? %>
-            <%= image_tag @user.profile_image %>
-          <% end %>
+        <%= link_to chat_room_path(chat_room.id) do %>
           <%= chat_room.room_name %>
         <% end %>
       </td>
       <td><%= chat_room.user.user_name %></td>
+      <td><%= chat_room.chat.count %></td>
       <td><%= chat_room.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-      <td><%= chat_room.chats.count %></td>
       <td>
         <% if current_user == chat_room.user %>
-          <%= link_to '削除', chat_room_path(chat_room_id) method: :delete, "data-confirm" => "本当に消しますか?" %>
+          <%= link_to '削除', chat_room_path(chat_room.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
         <% end %>
       </td>
     </tr>
@@ -36,7 +33,7 @@
   </table>
 </div>
 <div>
-  <%= render "chat_rooms/create_rooms" %>
+  <%= render "users/chat_rooms/create_rooms" %>
 </div>
 
 

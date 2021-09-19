@@ -12,7 +12,7 @@
     <% @posts.each do |post| %>
     <div>
       <div>
-        <%= link_to user_path(post.user) do %>
+        <%= link_to user_path(post.user_id) do %>
           <% if @user.profile_image.attached? %>
             <%= image_tag @user.profile_image %>
           <% end %>
@@ -34,6 +34,6 @@
     <% end %>
   </div>
   <div>
-    <%= render "users/list", user: @user %>
+    <%= render "users/users/list", user: @user %>
   </div>
 <div>

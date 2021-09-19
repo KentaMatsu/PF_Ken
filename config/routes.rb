@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-
+ # namespace :users do
   scope module: :users do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
@@ -50,14 +50,18 @@ Rails.application.routes.draw do
     resources :blogs do
       resources :blog_comments, only: [:destroy]
     end
+
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:destroy]
     end
+
     resources :chat_rooms, only: [:index, :show, :destroy] do
       resources :chats, only: [:destroy]
     end
+
     resources :contacts, only: [:index, :show]
+
   end
 
 

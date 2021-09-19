@@ -1,4 +1,4 @@
-class Users::PostController < ApplicationController
+class Users::PostsController < ApplicationController
 
   def new
     @post = Post.new
@@ -6,8 +6,9 @@ class Users::PostController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user_id
-    if @post.save
+    @post.user_id = current_user.id
+    p @post
+    if @post.save!
       #flash[:notice] = "You have created book successfully."
       redirect_to post_path(@post)
     else
@@ -23,7 +24,7 @@ class Users::PostController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @post_comment = Post_comment.new
+    @post_comment = PostComment.new
   end
 
   def edit

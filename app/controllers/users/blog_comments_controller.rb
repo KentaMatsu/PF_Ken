@@ -2,7 +2,7 @@ class Users::BlogCommentsController < ApplicationController
 
   def create
     @blog = Blog.find(params[:post_id])
-    blog_comment = Blog_comment.new(blog_comment_params)
+    blog_comment = BlogComment.new(blog_comment_params)
     blog_comment.user_id = current_user.id
     blog_comment.post_id = @blog.id
     if blog_comment.save

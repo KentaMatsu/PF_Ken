@@ -2,11 +2,11 @@
   <div>
     <h2>新規投稿</h2>
   </div>
-  <%= form_with model:post, local: true do |f| %>
+  <%= form_with model: @post, local: true do |f| %>
   <table>
     <tr>
-      <th><%= f.label :image, "投稿画像" %></th>
-      <td><%= f.file_field :image %></td>
+      <th><%= f.label :post_image, "投稿画像" %></th>
+      <td><%= f.file_field :post_image %></td>
     </tr>
     <tr>
       <th><%= f.label :title, "タイトル" %></th>
@@ -18,7 +18,7 @@
     </tr>
   </table>
   <div>
-    <%= link_to "マイページ", user_path %>
+    <%= link_to "マイページ", user_path(current_user) %>
     <%= f.submit '投稿する' %>
   </div>
   <% end %>

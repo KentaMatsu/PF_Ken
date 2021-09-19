@@ -10,15 +10,15 @@
       <%= link_to "戻る", chat_rooms_path %>
     </div>
   </div>
-  <%= render "chata/chats" chat_room: @chat_room %>
+  <%= render "users/chat_rooms/chats", chat_room: @chat_room %>
   <div>
     <div>
       <h5>コメント作成</h5>
     </div>
-    <%= form_with model:Chat, local: true do |f| %>
+    <%= form_with model:[@chat_room, @chat], method: :post, local: true do |f| %>
     <div>
       <%= f.label :response, "コメント" %>
-      <%= f.file_field :response %>
+      <%= f.text_field :response %>
     </div>
     <div>
       <%= f.submit '作成する' %>

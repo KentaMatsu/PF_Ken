@@ -1,23 +1,24 @@
 class Users::ChatRoomsController < ApplicationController
 
   def index
-    @chat_room = Chat_room.new
-    @chat_rooms = Chat_room.all
+    #@chat_room = Chat_room.new
+    @chat_rooms = ChatRoom.all
   end
 
   def show
-    @chat_room = Chat_room.find(params[:id])
+    @chat_room = ChatRoom.find(params[:id])
     @chat = Chat.new
+    
   end
 
   def create
-    @chat_room = Chat_room.new(chat_room_params)
+    @chat_room = ChatRoom.new(chat_room_params)
     @chat_room.user_id = current_user.id
-    if @chat_room.save
+    if @chat_room.save!
       # flash[:notice] = "You have created book successfully."
       redirect_to chat_room_path(@chat_room)
     else
-      @chat_rooms = Chat_room.all
+      @chat_rooms = ChatRoom.all
       render :index
     end
   end

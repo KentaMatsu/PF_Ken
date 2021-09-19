@@ -7,7 +7,7 @@
     <% if user_signed_in? %>
     <ul>
       <li>
-        <%= link_to user_path(user_id) do %>
+        <%= link_to user_path(current_user) do %>
           <i class="far fa-user">マイページ</i>
         <% end %>
       </li>
@@ -60,6 +60,11 @@
     <ul>
       <li>
         <%= link_to users_path do %>
+          <i>ユーザー一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to posts_path do %>
           <i>記事一覧</i>
         <% end %>
       </li>
@@ -79,6 +84,11 @@
     <ul>
       <li>
         <%= link_to admins_users_path do %>
+          <i>ユーザー一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admins_posts_path do %>
           <i>記事一覧</i>
         <% end %>
       </li>

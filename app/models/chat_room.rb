@@ -1,6 +1,6 @@
 class ChatRoom < ApplicationRecord
 
-  belongs_to :users
-  has_many :chats, dependent: :destroy
+  belongs_to :user, optional: true
+  has_many :chat, dependent: :destroy
 
 end
