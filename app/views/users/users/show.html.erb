@@ -1,25 +1,26 @@
 <h2>投稿一覧</h2>
+<% @posts.each do |posts| %>
 <div>
-  <% @posts.each do |posts| %>
   <div>
-    <%= link_to post_path(@post) do %>
-     <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image %>
-      <% end %>
-      <%= posts.user.user_name %>
+    <%= link_to post_path(posts.id) do %>
+      <%# if @post.post_image.attached? %>
+        <%#= image_tag @post.post_image %>
+      <%# end %>
     <% end %>
   </div>
   <div>
-    <%= posts.title %>
+    <div>
+      <%= posts.title %>
+    </div>
+    <div>
+      コメント数：<%= posts.post_comments.count %>
+    </div>
+    <div>
+      いいね：<%= render "users/likes/likes", posts: posts %>
+    </div>
   </div>
-  <div>
-    コメント数：<%= @post_comments.count %>
-  </div>
-  <div>
-    いいね：<%= render "likes/likes", posts: posts %>
-  </div>
-  <% end %>
 </div>
+<% end %>
 <div>
   <%= render "users/users/list", user: @user %>
 </div>

@@ -6,7 +6,7 @@ class Users::PostCommentsController < ApplicationController
     post_comment.user_id = current_user.id
     post_comment.post_id = @post.id
     if post_comment.save
-      redirect_to post_path(post)
+      redirect_to post_path(@post)
     else
       @user = @book.user
       render 'error'

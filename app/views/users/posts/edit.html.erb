@@ -2,11 +2,11 @@
   <div>
     <h2>投稿編集画面</h2>
   </div>
-  <%= form_with model:post, local: true do |f| %>
+  <%= form_with model:Post, local: true do |f| %>
   <table>
     <tr>
-      <th><%= f.label :image, "投稿画像" %></th>
-      <td><%= f.file_field :image %></td>
+      <th><%= f.label :post_image, "投稿画像" %></th>
+      <td><%= f.file_field :post_image %></td>
       <% if @user.post_image.attached? %>
         <%= @user.post_image.purge %>
       <% end %>
