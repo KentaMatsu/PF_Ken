@@ -17,12 +17,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
 
+    get '/users/check' => "users#check", as: 'users_check'
     resources :users, only: [:index, :show, :edit, :update, ] do
       resource :relationships, onry: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    get '/users/check' => "users#check", as: 'users_check'
+
     patch '/users/hide' => "users#hide", as: 'users_hide'
 
     resources :posts do

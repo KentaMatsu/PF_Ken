@@ -13,7 +13,11 @@
       <tr>
         <td>
           <%= link_to user_path(user.id) do %>
-            画像表示
+            <% if user.profile_image.attached? %>
+              <%= image_tag user.profile_image.variant(resize: '70x50') %>
+            <% else %>
+             <%= image_tag 'no_image.jpg', size: '70x50' %>
+            <% end %>
           <% end %>
         </td>
         <td>

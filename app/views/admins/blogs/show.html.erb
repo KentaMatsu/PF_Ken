@@ -1,1 +1,27 @@
-show
+<div>
+  <h2>ブログ詳細</h2>
+  <div>
+    <%= image_tag @blog.blog_image %>
+  </div>
+  <div>
+    <%= @blog.title %>
+    <%= link_to "編集", edit_admins_blog_path %>
+    <%= link_to "投稿削除", admins_blog_path(@blog), method: :delete, "data-confirm" => "本当に消しますか?" %>
+  </div>
+  <div>
+    <%= @blog.text %>
+  </div>
+  <div>
+    評価：<%#=  %>
+  </div>
+  <div>
+    ユーザーコメント<br>
+    <%= render "admin/blog_comments/users_comments", blog: @blog, blog_comment: @blog_comment %>
+  </div>
+  <div>
+    <%= link_to "ブログ一覧", admins_blogs_path %>
+  </div>
+</div>
+<div>
+  <%= render "admins/admin/menu" %>
+</div>

@@ -4,4 +4,6 @@ class Blog < ApplicationRecord
 
   has_many :blog_comments, dependent: :destroy
 
+  #validates :blog_image, attached_file_presence: true
+
 end

@@ -1,13 +1,19 @@
 <h2>ユーザー情報</h2>
 <div>
-  ユーザー画像
+  <%= link_to user_path(user.id) do %>
+    <% if user.profile_image.attached? %>
+      <%= image_tag user.profile_image.variant(resize: '130x100') %>
+    <% else %>
+     <%= image_tag 'no_image.jpg', size: '130x100' %>
+    <% end %>
+  <% end %>
 </div>
 <div>
   <%= user.user_name %>
 </div>
 <% if user == current_user %>
   <div>
-    <%= link_to "編集", edit_user_path %>
+    <%= link_to "編集", edit_user_path(@user.id) %>
   </div>
 <% end %>
 <div>
