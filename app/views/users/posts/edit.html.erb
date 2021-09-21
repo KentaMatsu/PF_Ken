@@ -2,14 +2,11 @@
   <div>
     <h2>投稿編集画面</h2>
   </div>
-  <%= form_with model:Post, local: true do |f| %>
+  <%= form_with model: @post, local: true do |f| %>
   <table>
     <tr>
       <th><%= f.label :post_image, "投稿画像" %></th>
       <td><%= f.file_field :post_image %></td>
-      <% if @user.post_image.attached? %>
-        <%= @user.post_image.purge %>
-      <% end %>
     </tr>
     <tr>
       <th><%= f.label :title, "タイトル" %></th>
@@ -21,13 +18,12 @@
     </tr>
   </table>
   <div>
-    <%= link_to "マイページ", user_path %>
-    <%= f.submit '投稿する' %>
+    <%= f.submit '更新' %>
   </div>
   <% end %>
   <div>
-    <%= link_to "マイページ", user_path %>
-    <%= link_to "投稿記事にもどる", post_path %>
+    <%= link_to "マイページ", user_path %>｜
+    <%= link_to "投稿詳細にもどる", post_path %>
   </div>
 </div>
 

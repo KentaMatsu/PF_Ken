@@ -21,7 +21,7 @@
         <% end %>
       </td>
       <td><%= chat_room.user.user_name %></td>
-      <td><%= chat_room.chat.count %></td>
+      <td><%= chat_room.chats.count %></td>
       <td><%= chat_room.created_at.strftime('%Y/%m/%d %H:%M') %></td>
       <td>
         <% if current_user == chat_room.user %>

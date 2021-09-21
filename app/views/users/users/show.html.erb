@@ -1,22 +1,22 @@
 <h2>投稿一覧</h2>
-<% @posts.each do |posts| %>
+<% @posts.each do |post| %>
 <div>
   <div>
-    <%= link_to post_path(posts.id) do %>
-      <%# if @post.post_image.attached? %>
-        <%#= image_tag @post.post_image %>
-      <%# end %>
+    <%= link_to post_path(post.id) do %>
+      <% if post.post_image.attached? %>
+        <%= image_tag post.post_image %>
+      <% end %>
     <% end %>
   </div>
   <div>
     <div>
-      <%= posts.title %>
+      <%= post.title %>
     </div>
     <div>
-      コメント数：<%= posts.post_comments.count %>
+      コメント数：<%= post.post_comments.count %>
     </div>
     <div>
-      いいね：<%= render "users/likes/likes", posts: posts %>
+      いいね：<%= render "users/likes/likes", post: post %>
     </div>
   </div>
 </div>

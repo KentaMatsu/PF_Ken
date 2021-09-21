@@ -33,7 +33,8 @@ class Users::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(posts_params)
+    # @post.post_image.purge # 画像の削除
+    if @post.update(post_params)
       redirect_to post_path(@post)
     else
       render :edit

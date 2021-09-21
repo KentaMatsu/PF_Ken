@@ -5,6 +5,11 @@
 <div>
   <%= user.user_name %>
 </div>
+<% if user == current_user %>
+  <div>
+    <%= link_to "編集", edit_user_path %>
+  </div>
+<% end %>
 <div>
   <%= user.text %>
 </div>
