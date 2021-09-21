@@ -1,0 +1,43 @@
+<div>
+  <div>
+    <div>
+      <h2>管理者ブログ一覧</h2>
+    </div>
+    <div>
+      <%= link_to "新規投稿", new_admins_blog_path %>
+      <%# 検索フォーム %>
+    </div>
+  </div>
+  <% @blogs.each do |blog| %>
+  <div>
+    <div>
+      <%= link_to admins_blog_path do %>
+        <% if @blog.blog_image.attached? %>
+          <%= image_tag @blog.blog_image %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <div>
+      <%= link_to admins_blog_path do %>
+        <%= blog.title %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "編集", edit_admins_blog_path %>
+    </div>
+    <div>
+      <%= link_to "削除", admins_blog_path, method: :delete, "data-confirm" => "本当に消しますか?" %>
+    </div>
+    <div>
+      評価：<%#=  %>
+      コメント数：<%= blob.blog_comments.count %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div>
+  <%= render "admins/admin/menu" %>
+</div>
+

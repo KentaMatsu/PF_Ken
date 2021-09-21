@@ -1,0 +1,24 @@
+<% post.post_comments.each do |post_comment| %>
+  <div>
+    <%= link_to user_path(post_comment.user) do %>
+      <div>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize: '70x50') %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: '70x50' %>
+        <% end %>
+      </div>
+      <div>
+        <%= post_comment.user.user_name %>
+      </div>
+      <div>
+        <%= post_comment.comment %>
+      </div>
+    <% end %>
+    <div>
+      <% if current_user == post_comment.user %>
+        <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

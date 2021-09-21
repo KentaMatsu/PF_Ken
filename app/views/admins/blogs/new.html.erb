@@ -1,0 +1,25 @@
+<div>
+  <div>
+    <h2>新規ブログ投稿</h2>
+  </div>
+  <%= form_with model: @blog, local: true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :blog_image, "投稿画像" %></th>
+      <td><%= f.file_field :blog_image %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :title, "タイトル" %></th>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :text, "コメント" %></th>
+      <td><%= f.text_field :text %></td>
+    </tr>
+  </table>
+  <div>
+    <%= f.submit '投稿' %>
+  </div>
+  <% end %>
+  <%= link_to "ブログ一覧", admins_blogs_path %>
+</div>

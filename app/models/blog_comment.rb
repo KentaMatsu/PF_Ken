@@ -1,7 +1,7 @@
 class BlogComment < ApplicationRecord
 
-  belongs_to :blogs
-  belongs_to :users
+  belongs_to :blog
+  belongs_to :user
 
   validates :rate, numericality: {
     less_than_or_equal_to: 5,

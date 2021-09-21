@@ -1,0 +1,120 @@
+<header>
+  <div>
+    <%= link_to root_path do %>ロゴ差し替え（ホームリンク）<% end %>
+  </div>
+  <nav>
+    <!-- ユーザーログイン時 -->
+    <% if user_signed_in? %>
+    <ul>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <i class="far fa-user">マイページ</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"> ログアウト </i>
+        <% end %>
+      </li>
+    </ul>
+    <!-- 管理者がログインしている時 -->
+    <% elsif admin_signed_in? %>
+    <ul>
+      <li>
+        <%= link_to admins_users_path do %>
+        <i class="fas fa-users"> ユーザー一覧 </i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"> ログアウト </i>
+        <% end %>
+      </li>
+    </ul>
+    <!-- ログインしていない時 -->
+    <% else %>
+    <ul>
+      <li>
+        <%= link_to home_about_path do %>
+          <i class="fas fa-home"> About </i>
+        <% end %>
+      </li>
+        <li>
+          <%= link_to new_user_registration_path do %>
+            <i class="fas fa-pencil-alt"> 新規登録 </i>
+          <% end %>
+          </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+            <i class="fas fa-sign-in-alt"> ログイン </i>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </nav>
+<herder>
+<div>
+  <nav>
+    <!-- ユーザーログイン時 -->
+    <% if user_signed_in? %>
+    <ul>
+      <li>
+        <%= link_to users_path do %>
+          <i>ユーザー一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to posts_path do %>
+          <i>記事一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to chat_rooms_path do %>
+          <i>掲示板</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to blogs_path do %>
+          <i>管理人ブログ</i>
+        <% end %>
+      </li>
+    </ul>
+    <!-- 管理者がログインしている時 -->
+    <% elsif admin_signed_in? %>
+    <ul>
+      <li>
+        <%= link_to admins_users_path do %>
+          <i>ユーザー一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admins_posts_path do %>
+          <i>記事一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admins_chat_rooms_path do %>
+          <i>掲示板</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admins_blogs_path do %>
+          <i>管理人ブログ</i>
+        <% end %>
+      </li>
+    </ul>
+    <!-- ログインしていない時 -->
+    <% else %>
+    <ul>
+      <li>
+        <%= link_to blogs_path do %>
+          <i>管理人ブログ</i>
+        <% end %>
+      </li>
+    </ul>
+    <% end %>
+    <!-- 検索フォーム -->
+  </nav>
+</div>
+
+
