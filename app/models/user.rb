@@ -35,6 +35,12 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def full_name
+    self.last_name. + " " + self.first_name
+  end
 
+  def full_kana_name
+    self.kana_last_name + " " + self.kana_first_name
+  end
 
 end
