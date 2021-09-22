@@ -11,10 +11,10 @@
       <div>
         <%= blog_comment.user.user_name %>
       </div>
+      <% end %>
       <div>
         <%= blog_comment.comment %>
       </div>
-    <% end %>
     <div>
       <%= link_to '削除', admins_blog_blog_comment_path(blog_comment.blog_id, blog_comment.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
     </div>
