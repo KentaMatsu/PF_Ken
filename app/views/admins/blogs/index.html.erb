@@ -9,32 +9,28 @@
     </div>
   </div>
   <% @blogs.each do |blog| %>
-  <div>
     <div>
-      <%= link_to admins_blog_path do %>
-        <% if @blog.blog_image.attached? %>
-          <%= image_tag @blog.blog_image %>
+      <%= link_to admins_blog_path(blog.id) do %>
+      <div>
+        <% if blog.blog_image.attached? %>
+          <%= image_tag blog.blog_image %>
         <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div>
-    <div>
-      <%= link_to admins_blog_path do %>
+      </div>
+      <div>
         <%= blog.title %>
+      </div>
       <% end %>
     </div>
     <div>
-      <%= link_to "編集", edit_admins_blog_path %>
+      <%= link_to "編集", edit_admins_blog_path(blog.id) %>
     </div>
     <div>
-      <%= link_to "削除", admins_blog_path, method: :delete, "data-confirm" => "本当に消しますか?" %>
+      <%= link_to "削除", admins_blog_path(blog.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
     </div>
     <div>
-      評価：<%#=  %>
-      コメント数：<%= blob.blog_comments.count %>
+      評価：<%#=  %><br>
+      コメント数：<%= blog.blog_comments.count %>
     </div>
-  </div>
   <% end %>
 </div>
 <div>

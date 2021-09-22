@@ -1,0 +1,32 @@
+<div>
+  <div>
+    ユーザー一覧
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>ユーザーID</th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.full_name, admins_user_path(user.id) %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.is_deleted == true %>
+            <p>退会済</p>
+          <% else %>
+            <p>有効</p>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div>
+  <%= render "admins/admin/menu" %>
+</div>
