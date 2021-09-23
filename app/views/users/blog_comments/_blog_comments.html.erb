@@ -1,10 +1,10 @@
 <% blog.blog_comments.each do |blog_comment| %>
 <div>
   <div>
-    <% if @user.profile_image.attached? %>
-      <%= image_tag @user.profile_image %>
+    <% if blog_comment.user.profile_image.attached? %>
+      <%= image_tag blog_comment.user.profile_image.variant(resize: '70x50') %>
     <% else %>
-      <%= image_tag 'no_image.jpg' %>
+      <%= image_tag 'no_image.jpg', size: '70x50' %>
     <% end %>
   </div>
   <div>
@@ -15,7 +15,7 @@
   </div>
   <% if current_user == blog_comment.user %>
   <div>
-    <%= link_to '削除', blog_blog_comment_path(blog_comment.blog_id, blog_comment.id) method: :delete, "data-confirm" => "本当に消しますか?" %>
+    <%= link_to '削除', blog_blog_comment_path(blog_comment.blog_id, blog_comment.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
 　</div>
   <% end %>
 

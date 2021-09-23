@@ -10,7 +10,6 @@ class Users::PostCommentsController < ApplicationController
     else
       @user = @book.user
       render 'error'
-      # 後で確認
     end
   end
 
