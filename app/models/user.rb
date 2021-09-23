@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :profile_image
+
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -33,6 +35,12 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def full_name
+    self.last_name. + " " + self.first_name
+  end
 
+  def full_kana_name
+    self.kana_last_name + " " + self.kana_first_name
+  end
 
 end

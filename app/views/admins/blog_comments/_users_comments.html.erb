@@ -1,0 +1,22 @@
+<% blog.blog_comments.each do |blog_comment| %>
+  <div>
+    <%= link_to admins_user_path(blog_comment.user) do %>
+      <div>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image.variant(resize: '70x50') %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: '70x50' %>
+        <% end %>
+      </div>
+      <div>
+        <%= blog_comment.user.user_name %>
+      </div>
+      <% end %>
+      <div>
+        <%= blog_comment.comment %>
+      </div>
+    <div>
+      <%= link_to '削除', admins_blog_blog_comment_path(blog_comment.blog_id, blog_comment.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
+    </div>
+  </div>
+<% end %>

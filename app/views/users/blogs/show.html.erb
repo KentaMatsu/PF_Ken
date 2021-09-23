@@ -1,2 +1,29 @@
-<h1>Blogs#show</h1>
-<p>Find me in app/views/blogs/show.html.erb</p>
+<div>
+  <h2>管理人ブログ</h2>
+  <div>
+    <%= image_tag @blog.blog_image %>
+  </div>
+  <div>
+    <%= @blog.title %>
+    評価：<%#=  %>
+  </div>
+  <div>
+    <%= @blog.text %>
+  </div>
+  <div>
+    <div>
+      <%= render "users/blog_comments/blog_comments", blog: @blog, blog_comment: @blog_comment %>
+    </div>
+  </div>
+  <div>
+    <%= form_with model:[@blog, @blog_comment], local: true do |f| %>
+      <%= f.label :comment, "コメント投稿" %>
+      <%= f.text_area :comment, :placeholder => "コメント内容" %><br>
+      <%= f.submit "投稿" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "マイページ", user_path %>
+    <%= link_to "管理人ブログ一覧", blogs_path %>
+  </div>
+</div>

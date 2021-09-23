@@ -1,2 +1,28 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<div>
+  <div>
+    <div>
+      <h2>管理人ブログ一覧</h2>
+    </div>
+    <div>
+      <%# 検索フォーム %>
+    </div>
+  </div>
+  <% @blogs.each do |blog| %>
+  <div>
+    <%= link_to blog_path(blog) do %>
+    <div>
+      <% if blog.blog_image.attached? %>
+        <%= image_tag blog.blog_image %>
+      <% end %>
+    </div>
+    <% end %>
+    <div>
+      <%= blog.title %><br>
+      作成日<%#= blog.created_at %>
+      更新日<%#= blog.updated_at %>
+      評価<!-- 後で追加 -->
+      コメント数：<%= blog.blog_comments.count %>
+    </div>
+  </div>
+  <% end %>
+</div>

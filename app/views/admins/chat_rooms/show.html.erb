@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <div>
+      <%= @chat_room.room_name %>
+    </div>
+    <div>
+      作成者：<%= @chat_room.user.user_name %>
+    </div>
+    <div>
+      <%= link_to "一覧にもどる", admins_chat_rooms_path %>
+    </div>
+  </div>
+  <%= render "admins/chats/users_chats", chat_room: @chat_room %>
+</div>
+<div>
+  <%= render "admins/admin/menu" %>
+</div>

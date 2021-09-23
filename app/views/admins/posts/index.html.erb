@@ -1,0 +1,31 @@
+<div>
+  <div>
+    ユーザー投稿記事一覧
+  </div>
+  <% @posts.each do |post| %>
+  <div>
+    <div>
+    <%= link_to admins_user_path(post.user.id) do %>
+      <% if post.user.profile_image.attached? %>
+        <%= image_tag post.user.profile_image.variant(resize: '130x100') %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', size: '130x100' %>
+      <% end %>
+      <%= post.user.user_name %>
+    <% end %>
+    </div>
+    <div>
+    <%= link_to admins_post_path(post.id) do %>
+      <% if post.post_image.attached? %>
+        <%= image_tag post.post_image.variant(resize: '130x100') %>
+      <% end %>
+      <%= post.title %>
+    <% end %>
+    </div>
+  </div>
+  <%= link_to "投稿削除", admins_post_path(post), method: :delete, "data-confirm" => "本当に消しますか?" %>
+  <% end %>
+</div>
+<div>
+  <%= render "admins/admin/menu" %>
+</div>

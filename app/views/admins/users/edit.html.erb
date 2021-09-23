@@ -1,0 +1,43 @@
+<div>
+  <div>
+    <div>
+      <%= @user.full_name %>さんの情報編集
+    </div>
+    <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :ユーザーID %></th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :氏名 %></th>
+        <td><%= f.text_field :last_name %></td>
+        <td><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label:フリガナ %></th>
+        <td><%= f.text_field :kana_last_name %></td>
+        <td><%= f.text_field :kana_first_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label:ユーザーネーム %></th>
+        <td><%= f.text_field :user_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label:メールアドレス %></th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <th><%= f.label:ステータス %></th>
+        <td>
+          <%= f.radio_button :is_deleted, false %>有効
+          <%= f.radio_button :is_deleted, true %>退会
+        </td>
+      </tr>
+    </table>
+    <div>
+      <%= f.submit "保存" %>
+    </div>
+    <% end %>
+  </div>
+</div>

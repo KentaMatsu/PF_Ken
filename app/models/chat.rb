@@ -1,6 +1,6 @@
 class Chat < ApplicationRecord
 
-  belongs_to :users
-  belongs_to :chat_rooms
+  belongs_to :user, optional: true
+  belongs_to :chat_room, optional: true
 
 end

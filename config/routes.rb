@@ -1,15 +1,29 @@
 Rails.application.routes.draw do
 
-  scope modele: :users do
+  devise_for :admins, controllers:{
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations'
+  }
+
+ # namespace :users do
+  scope module: :users do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
 
+    get '/users/check' => "users#check", as: 'users_check'
     resources :users, only: [:index, :show, :edit, :update, ] do
       resource :relationships, onry: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    get '/users/check' => "users#check", as: 'users_check'
+
     patch '/users/hide' => "users#hide", as: 'users_hide'
 
     resources :posts do
@@ -31,35 +45,25 @@ Rails.application.routes.draw do
     end
 
   end
-  
+
   namespace :admins do
-    root to: 'homes#top'
-    get 'home/about' => 'homes#about'
-    
+
     resources :blogs do
       resources :blog_comments, only: [:destroy]
     end
+
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:destroy]
     end
+
     resources :chat_rooms, only: [:index, :show, :destroy] do
       resources :chats, only: [:destroy]
     end
+
     resources :contacts, only: [:index, :show]
+
   end
-
-  devise_for :admins, controllers:{
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations'
-  }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

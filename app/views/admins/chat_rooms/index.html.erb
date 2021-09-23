@@ -1,0 +1,32 @@
+<div>
+  <div>
+    <h4>掲示板一覧</h4>
+  </div>
+  <table>
+    <tr>
+      <th>スレッド</th>
+      <th>作者</th>
+      <th>コメント数</th>
+      <th>作成日時</th>
+      <th></th>
+    </tr>
+    <% @chat_rooms.each do |chat_room| %>
+    <tr>
+      <td>
+        <%= link_to admins_chat_room_path(chat_room.id) do %>
+          <%= chat_room.room_name %>
+        <% end %>
+      </td>
+      <td><%= chat_room.user.user_name %></td>
+      <td><%= chat_room.chats.count %></td>
+      <td><%= chat_room.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+      <td>
+        <%= link_to '削除', chat_room_path(chat_room.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<div>
+  <%= render "admins/admin/menu" %>
+</div>

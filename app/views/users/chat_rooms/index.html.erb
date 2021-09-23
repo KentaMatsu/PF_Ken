@@ -1,2 +1,39 @@
-<h1>ChatRooms#index</h1>
-<p>Find me in app/views/chat_rooms/index.html.erb</p>
+<div>
+  <div>
+    <h2>掲示板</h2>
+  </div>
+  <div>
+    <h4>スレッド一覧</h4>
+  </div>
+  <table>
+    <tr>
+      <th>スレッド</th>
+      <th>作者</th>
+      <th>コメント数</th>
+      <th>作成日時</th>
+      <th></th>
+    </tr>
+    <% @chat_rooms.each do |chat_room| %>
+    <tr>
+      <td>
+        <%= link_to chat_room_path(chat_room.id) do %>
+          <%= chat_room.room_name %>
+        <% end %>
+      </td>
+      <td><%= chat_room.user.user_name %></td>
+      <td><%= chat_room.chats.count %></td>
+      <td><%= chat_room.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+      <td>
+        <% if current_user == chat_room.user %>
+          <%= link_to '削除', chat_room_path(chat_room.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<div>
+  <%= render "users/chat_rooms/create_rooms" %>
+</div>
+
+
