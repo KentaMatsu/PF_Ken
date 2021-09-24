@@ -1,42 +1,50 @@
-<h2>ユーザー情報編集</h2>
-
-<%= form_with model: @user, url: user_path, local: true do |f| %>
-<div>
-  <table>
-    <tr>
-      <th>画像表示</th>
-      <td><%= f.file_field :image %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th><%= f.label :ニックネーム %></th>
-      <td><%= f.text_field :user_name %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th><%= f.label :紹介文 %></th>
-      <td><%= f.text_field :text %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th><%= f.label :氏名 %></th>
-      <td><%= f.text_field :last_name %></td>
-      <td><%= f.text_field :first_name %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :フリガナ %></th>
-      <td><%= f.text_field :kana_last_name %></td>
-      <td><%= f.text_field :kana_first_name %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :メールアドレス %></th>
-      <td><%= f.text_field :email %></td>
-      <td></td>
-    </tr>
-  </table>
-    <div>
-    <%= f.submit "編集内容を保存" %>
+<div class="container col-9">
+  <div class="row mx-5 my-4">
+    <h2>ユーザー情報編集</h2>
+  </div>
+  <%= form_with model: @user, url: user_path, local: true do |f| %>
+  <div>
+    <table class="table">
+      <tr>
+        <th>
+          ユーザー画像&emsp;&emsp;
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image.variant(resize: '146x90') %>
+          <% else %>
+           <%= image_tag 'no_image.jpg', size: '146x90' %>
+          <% end %>
+        </th>
+        <td colspan="2"><%= f.file_field :profile_image %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :ニックネーム %></th>
+        <td colspan="2"><%= f.text_field :user_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :紹介文 %></th>
+        <td colspan="2"><%= f.text_field :text %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :氏名 %></th>
+        <td><%= f.text_field :last_name %></td>
+        <td><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :フリガナ %></th>
+        <td><%= f.text_field :kana_last_name %></td>
+        <td><%= f.text_field :kana_first_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :メールアドレス %></th>
+        <td colspan="2"><%= f.text_field :email %></td>
+      </tr>
+    </table>
+    <div class="my-5 text-center">
+      <%= f.submit "編集内容を保存", class:"btn btn-outline-primary" %>
+    </div>
   </div>
   <% end %>
-  <%= link_to "退会する", users_check_path, action: "check" %>
+  <div class="my-5 text-center">
+    <%= link_to "退会する", users_check_path, action: "check", class:"btn btn-outline-danger" %>
+  </div>
 </div>
