@@ -9,31 +9,33 @@
     <h3>
       ここはバイクが好きな人たちの交流場です<br>
       自身のバイクの写真を投稿したり、掲示板を使って<br>
-      ユーザー同士の交流を楽しみましょう<br>
+      ユーザー同士の交流を楽しみましょう!<br>
     </h3>
   </div>
-  <div class="row center-block my-5">
-    <div class="col offset-1">
-      <%= link_to "新規会員登録はこちらから", new_user_registration_path, class: "btn btn-outline-success" %>
+  <% unless user_signed_in? or admin_signed_in? %>
+    <div class="row col text-center my-5">
+      <div class="col">
+        <%= link_to "新規会員登録はこちらから", new_user_registration_path, class: "btn btn-outline-success" %>
+      </div>
+      <div class="col">
+        <%= link_to "会員ログインはこちらから", new_user_session_path, class: "btn btn-outline-primary" %>
+      </div>
     </div>
-    <div class="col offset-1">
-      <%= link_to "会員ログインはこちらから", new_user_session_path, class: "btn btn-outline-primary" %>
-    </div>
-  </div>
-  <div class="">
-    <div class="row">
+  <% end %>
+  <div class="col text-center">
+    <div class="">
       <h4>ユーザー投稿</h4>
     </div>
-    <div class="row">
+    <div class="">
       <h4>掲示板</h4>
     </div>
-    <div class="row">
+    <div class="">
       <h4>管理人ブログ</h4>
     </div>
-    <div class="row">
-      <h4>おしらせ</h4>
+    <div class="">
+      <h4>お知らせ</h4>
     </div>
-    <div class="row">
+    <div class="">
       <h4>お問い合わせ</h4>
     </div>
   </div>
