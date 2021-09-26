@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   devise_for :admins, controllers:{
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   scope module: :users do
     root to: 'homes#top'
     get 'home/about' => 'homes#about'
+
+    get '/search' => 'search#search'
 
     get '/users/check' => "users#check", as: 'users_check'
     resources :users, only: [:index, :show, :edit, :update, ] do

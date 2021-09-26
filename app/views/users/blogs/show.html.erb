@@ -1,12 +1,11 @@
 <div class="container col-9 mt-4 mb-5">
-  <h2 class="col text-center">管理人ブログ</h2>
+  <h2 class="col text-center"><%= @blog.title %></h2>
   <div class="my-3 col-8 offset-2 text-center">
     <div>
       <%= image_tag @blog.blog_image %>
     </div>
     <div class="my-4">
-      <h4><%= @blog.title %></h4>
-      <h6 class="mb-4"><%= @blog.text %></h6><br>
+      <h4 class="mb-4"><%= @blog.text %></h4><br>
       作成日：<%= @blog.created_at.strftime('%Y/%m/%d %H:%M') %>&emsp;
       更新日：<%= @blog.updated_at.strftime('%Y/%m/%d %H:%M') %>
     </div>
