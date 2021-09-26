@@ -1,5 +1,7 @@
 class Users::ChatRoomsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     #@chat_room = Chat_room.new
     @chat_rooms = ChatRoom.all
@@ -8,7 +10,7 @@ class Users::ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.find(params[:id])
     @chat = Chat.new
-    
+
   end
 
   def create

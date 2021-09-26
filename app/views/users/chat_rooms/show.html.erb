@@ -1,27 +1,25 @@
-<div>
-  <div>
-    <div>
-      <%= @chat_room.room_name %>
+<div class="container mb-5">
+  <div class="my-4">
+    <div class="row">
+      <h3 class="mr-5"><%= @chat_room.room_name %></h3>
+      <%= link_to "掲示板一覧に戻る", chat_rooms_path, class: "btn btn-outline-primary" %>
     </div>
-    <div>
-      <%= @chat_room.user.user_name %>
-    </div>
-    <div>
-      <%= link_to "戻る", chat_rooms_path %>
+    <div class="my-3">
+      ルーム作成者：<%= @chat_room.user.user_name %>
     </div>
   </div>
   <%= render "users/chat_rooms/chats", chat_room: @chat_room %>
-  <div>
+  <div class="col text-center">
     <div>
       <h5>コメント作成</h5>
     </div>
     <%= form_with model:[@chat_room, @chat], method: :post, local: true do |f| %>
-    <div>
+    <div class="my-4">
       <%= f.label :response, "コメント" %>
       <%= f.text_field :response %>
     </div>
     <div>
-      <%= f.submit '作成する' %>
+      <%= f.submit '作成する', class: "btn btn-success" %>
     </div>
     <% end %>
   </div>

@@ -34,13 +34,13 @@
           <%= f.label :comment, "コメント投稿" %><br>
           <%= f.text_area :comment, size: "60x5" %>
           <div class="my-3">
-            <%= f.submit "投稿" %>
+            <%= f.submit "投稿", class: "btn btn-outline-success" %>
           </div>
         <% end %>
       </div>
-      <div class="col text-center">
+      <div class="col text-center my-5">
         <%= link_to "マイページ", user_path, class: "mx-3 btn btn-outline-primary" %>
-        <%= link_to "ユーザー投稿一覧", posts_path, class: "mx-3 btn btn-outline-success" %>
+        <%= link_to "ユーザー投稿一覧", posts_path, class: "mx-3 btn btn-outline-primary" %>
       </div>
     </div>
     <div class="col-4 offset-1 my-5">
