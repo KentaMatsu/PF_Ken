@@ -13,7 +13,7 @@ class Users::ContactsController < ApplicationController
     end
   end
 
-  # 入力ミスで戻るときに入力データを保持した状態で戻る
+  # 入力ミスなどで戻るときに入力データを保持した状態で戻る
   def back
     @contact = Contact.new(contact_params)
     render :new
@@ -38,7 +38,7 @@ class Users::ContactsController < ApplicationController
 
   def contact_params
     params.require(:contact)
-          .permit(:email,:name,:phone_number,:subject,:message)
+          .permit(:email,:name,:title,:message)
   end
 
 end

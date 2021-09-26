@@ -1,36 +1,51 @@
-<div>
-  <h2>投稿情報</h2>
-  <div>
-    <%= image_tag @post.post_image %>
-  </div>
-  <div>
-    <%= @post.title %>
-    <% if @post.user_id == current_user.id %>
-      <%= link_to "編集", edit_post_path %>
-      <%= link_to "投稿削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?" %>
-    <% end %>
-  </div>
-  <div>
-    <%= @post.text %>
-  </div>
-  <div>
-    いいね：<%= @post.likes.count %>
-  </div>
-  <div>
-    <div>
-      <%= render "users/post_comments/post_comments", post: @post, post_comment: @post_comment %>
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-7 my-5">
+      <div class="mb-3">
+        <h2>投稿情報</h2>
+      </div>
+      <div class="mb-4">
+        <%= image_tag @post.post_image.variant(resize: '534x330') %>
+      </div>
+      <div class="row ml-1">
+        <h3><%= @post.title %></h3>
+        <% if @post.user_id == current_user.id %>
+          <%= link_to "編集", edit_post_path, class: "mx-5 btn btn-outline-primary" %>
+          <%= link_to "投稿削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+      <div class="ml-1">
+        投稿日：<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </div>
+      <div class="my-3">
+        <h5><%= @post.text %></h5>
+      </div>
+      <div class="row my-4 ml-1">
+        いいね：<%= render "users/likes/likes", post: @post %>&emsp;&emsp;
+        コメント数：<%= @post.post_comments.count %>
+      </div>
+      <div>
+        <div>
+          <%= render "users/post_comments/post_comments", post: @post, post_comment: @post_comment %>
+        </div>
+      </div>
+      <div>
+        <%= form_with model:[@post, @post_comment], method: :post, local: true do |f| %>
+          <%= f.label :comment, "コメント投稿" %><br>
+          <%= f.text_area :comment, size: "60x5" %>
+          <div class="my-3">
+            <%= f.submit "投稿", class: "btn btn-outline-success" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col text-center my-5">
+        <%= link_to "マイページ", user_path, class: "mx-3 btn btn-outline-primary" %>
+        <%= link_to "ユーザー投稿一覧", posts_path, class: "mx-3 btn btn-outline-primary" %>
+      </div>
+    </div>
+    <div class="col-4 offset-1 my-5">
+      <%= render "users/users/list", user: @user %>
     </div>
   </div>
-  <div>
-    <%= form_with model:[@post, @post_comment], method: :post, local: true do |f| %>
-      <%= f.label :comment, "コメント投稿" %><br>
-      <%= f.text_area :comment %><br>
-      <%= f.submit "投稿" %>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to "マイページ", user_path %>
-    <%= link_to "ユーザー投稿一覧", posts_path %>
-  </div>
 </div>
-<%= render "users/users/list", user: @user %>
+

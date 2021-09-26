@@ -1,119 +1,138 @@
 <header>
-  <div>
-    <%= link_to "ロゴ差し替え(ホームリンク)",root_path %>
-  </div>
-  <nav>
-    <!-- ユーザーログイン時 -->
-    <% if user_signed_in? %>
-    <ul>
-      <li>
-        <%= link_to user_path(current_user) do %>
-          <i class="far fa-user">マイページ</i>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#87cefa;">
+    <div class="container">
+      <div class="navbar-brand navbar-left ">
+        <%= link_to root_path do %>
+          <%= image_tag 'topimg.png', size: '60x60' %>
+          RidersCommunitySite
         <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"> ログアウト </i>
-        <% end %>
-      </li>
-    </ul>
-    <!-- 管理者がログインしている時 -->
-    <% elsif admin_signed_in? %>
-    <ul>
-      <li>
-        <%= link_to admins_users_path do %>
-        <i class="fas fa-users"> ユーザー一覧 </i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_admin_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"> ログアウト </i>
-        <% end %>
-      </li>
-    </ul>
-    <!-- ログインしていない時 -->
-    <% else %>
-    <ul>
-      <li>
-        <%= link_to home_about_path do %>
-          <i class="fas fa-home"> About </i>
-        <% end %>
-      </li>
-        <li>
-          <%= link_to new_user_registration_path do %>
-            <i class="fas fa-pencil-alt"> 新規登録 </i>
-          <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <nav class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="nav navbar-nav ml-auto">
+        <!-- ユーザーログイン時 -->
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to user_path(current_user) do %>
+              <i class="far fa-user mx-2">マイページ</i>
+            <% end %>
           </li>
-        <li>
-          <%= link_to new_user_session_path do %>
-            <i class="fas fa-sign-in-alt"> ログイン </i>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt mx-2">ログアウト</i>
+            <% end %>
+          </li>
+        <!-- 管理者がログインしている時 -->
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to admins_users_path do %>
+            <i class="fas fa-users mx-2">ユーザー一覧</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_admin_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt mx-2">ログアウト</i>
+            <% end %>
+          </li>
+        <!-- ログインしていない時 -->
+        <% else %>
+          <li class="nav-item">
+            <%= link_to home_about_path do %>
+              <i class="fas fa-home mx-2">About</i>
+            <% end %>
+          </li class="nav-item">
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-pencil-alt mx-2">新規登録</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt mx-2">ログイン</i>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </nav>
+    </div>
+  </nav>
+<herder>
+<div class="navbar navbar-expand-lg navbar-light" style="background-color:#e6e6fa;">
+  <nav class="col text-center">
+    <div class="navbar-brand navbar-center header-logo">
+      <!-- ユーザーログイン時 -->
+      <ul class="nav navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to users_path do %>
+            <i class="mx-3">ユーザー一覧</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path do %>
+            <i class="mx-3">投稿一覧</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to chat_rooms_path do %>
+            <i class="mx-3">掲示板</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to blogs_path do %>
+            <i class="mx-3">管理人ブログ</i>
+          <% end %>
+          <li class="nav-item">
+          <%= link_to new_contact_path do %>
+            <i class="mx-3">お問い合せ</i>
+          <% end %>
+        </li>
+        </li>
+      <!-- 管理者がログインしている時 -->
+      <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to admins_users_path do %>
+            <i class="mx-3">ユーザー一覧</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_posts_path do %>
+            <i class="mx-3">投稿一覧</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_chat_rooms_path do %>
+            <i class="mx-3">掲示板</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_blogs_path do %>
+            <i>管理人ブログ</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_contact_path do %>
+            <i class="mx-3">お問い合せ</i>
+          <% end %>
+        </li>
+      <!-- ログインしていない時 -->
+      <% else %>
+        <li class="nav-item">
+          <%= link_to blogs_path do %>
+            <i class="mx-3">管理人ブログ</i>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_contact_path do %>
+            <i class="mx-3">お問い合せ</i>
           <% end %>
         </li>
       </ul>
-    <% end %>
-  </nav>
-<herder>
-<div>
-  <nav>
-    <!-- ユーザーログイン時 -->
-    <% if user_signed_in? %>
-    <ul>
-      <li>
-        <%= link_to users_path do %>
-          <i>ユーザー一覧</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to posts_path do %>
-          <i>記事一覧</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to chat_rooms_path do %>
-          <i>掲示板</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to blogs_path do %>
-          <i>管理人ブログ</i>
-        <% end %>
-      </li>
-    </ul>
-    <!-- 管理者がログインしている時 -->
-    <% elsif admin_signed_in? %>
-    <ul>
-      <li>
-        <%= link_to admins_users_path do %>
-          <i>ユーザー一覧</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admins_posts_path do %>
-          <i>記事一覧</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admins_chat_rooms_path do %>
-          <i>掲示板</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admins_blogs_path do %>
-          <i>管理人ブログ</i>
-        <% end %>
-      </li>
-    </ul>
-    <!-- ログインしていない時 -->
-    <% else %>
-    <ul>
-      <li>
-        <%= link_to blogs_path do %>
-          <i>管理人ブログ</i>
-        <% end %>
-      </li>
-    </ul>
-    <% end %>
-    <!-- 検索フォーム -->
+      <% end %>
+      <!-- 検索フォーム -->
+    </div>
   </nav>
 </div>
 

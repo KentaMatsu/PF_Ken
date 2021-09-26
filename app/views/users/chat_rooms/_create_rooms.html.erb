@@ -1,16 +1,14 @@
-<div>
+<div class="col text-center">
   <div>
     <h4>新規スレッド作成</h4>
   </div>
   <%= form_with model:ChatRoom, local: true do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :room_name, "スレッドタイトル" %></th>
-      <td><%= f.text_field :room_name %></td>
-    </tr>
-  </table>
+  <div class="my-4">
+    <%= f.label :room_name, "スレッドタイトル" %>
+    <%= f.text_field :room_name %>
+  </div>
   <div>
-    <%= f.submit '作成する' %>
+    <%= f.submit '作成する', class: "btn btn-outline-success" %>
   </div>
   <% end %>
 </div>

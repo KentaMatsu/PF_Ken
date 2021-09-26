@@ -1,5 +1,7 @@
 class Admins::ChatRoomsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def index
     @chat_rooms = ChatRoom.all
   end

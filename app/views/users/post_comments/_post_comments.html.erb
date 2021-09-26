@@ -1,24 +1,23 @@
 <% post.post_comments.each do |post_comment| %>
-  <div>
-    <%= link_to user_path(post_comment.user) do %>
+  <div class="border mb-3">
+    <div class="ml-1 row">
       <div>
         <% if @user.profile_image.attached? %>
           <%= image_tag @user.profile_image.variant(resize: '70x50') %>
         <% else %>
           <%= image_tag 'no_image.jpg', size: '70x50' %>
         <% end %>
+        コメント投稿者&emsp;
+        <%= link_to user_path(post_comment.user) do %>
+          <%= post_comment.user.user_name %>
+        <% end %>
+        <% if current_user == post_comment.user %>
+          <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "ml-4 btn btn-danger" %>
+        <% end %>
       </div>
-      <div>
-        <%= post_comment.user.user_name %>
-      </div>
-      <div>
-        <%= post_comment.comment %>
-      </div>
-    <% end %>
-    <div>
-      <% if current_user == post_comment.user %>
-        <%= link_to '削除', post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, "data-confirm" => "本当に消しますか?" %>
-      <% end %>
+    </div>
+    <div class="mx-1 my-4 row">
+      <%= post_comment.comment %>
     </div>
   </div>
 <% end %>
