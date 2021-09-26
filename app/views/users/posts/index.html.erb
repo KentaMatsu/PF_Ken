@@ -1,42 +1,53 @@
-<div>
-  <div>
-    <div>
-      <h2>ユーザー投稿一覧</h2>
-    </div>
-    <div>
-      <%= link_to "投稿", new_post_path %>
-      <%# 検索フォーム %>
-    </div>
-  </div>
-  <div>
-    <% @posts.each do |post| %>
-    <div>
-      <div>
-        <%= link_to user_path(post.user_id) do %>
+<div class="container">
+  <div class="row">
+    <div class="col-7 my-5">
+      <div class="row mb-3">
+        <h2>投稿一覧</h2>
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-primary mx-5" %>
+      </div>
+      <%= render "users/search/search_form" %>
+      <% @posts.each do |post| %>
+      <div class="mb-4 border">
+        <div class="row mb-2">
           <% if @user.profile_image.attached? %>
-            <%= image_tag @user.profile_image %>
+            <%= image_tag @user.profile_image.variant(resize: '97x60') %>
           <% end %>
-          <%= post.user.user_name %>
-        <% end %>
-      </div>
-      <div>
-        <div>
-          <%= link_to post_path(post.id) do %>
-            <% if post.post_image.attached? %>
-              <%= image_tag post.post_image %>
+          &emsp;投稿者：
+          <%= link_to user_path(post.user_id) do %>
+            <%= post.user.user_name %>
+          <% end %>
+        </div>
+        <div class="row">
+          <div>
+            <%= link_to post_path(post.id) do %>
+              <% if post.post_image.attached? %>
+                <%= image_tag post.post_image.variant(resize: '324x200') %>
+              <% end %>
             <% end %>
-            <%= post.title %>
-          <% end %>
-        </div>
-        <div>
-          いいね数：<%= post.likes.count %>
-          コメント数：<%= post.post_comments.count %>
+          </div>
+          <div class="ml-4">
+            <div>
+              <%= link_to post_path(post.id) do %>
+                <h4><%= post.title %></h4>
+              <% end %>
+            </div>
+            <div class="my-3">
+              いいね数：<%= post.likes.count %>
+            </div>
+            <div>
+              コメント数：<%= post.post_comments.count %>
+            </div>
+            <div class="mt-3">
+              投稿日<br>
+              <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </div>
+          </div>
         </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
+    <div class="col-4 offset-1 my-5">
+      <%= render "users/users/list", user: @user %>
+    </div>
   </div>
-  <div>
-    <%= render "users/users/list", user: @user %>
-  </div>
-<div>
+</div>

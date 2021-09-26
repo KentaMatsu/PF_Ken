@@ -1,24 +1,39 @@
-<%# フォローユーザーのページ %>
-
-<h2>Follow Users</h2>
-<% if @users.exists? %>
-  <thead>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
+<div class="container col-10">
+  <div class="row my-4">
+    <h2 class="mr-5">フォローユーザー</h2>
+  </div>
+  <% if @users.exists? %>
+  <table class="table my-5">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
+        <th>ユーザー名</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user do %>
+              <% if user.profile_image.attached? %>
+                <%= image_tag user.profile_image.variant(resize: '113x70') %>
+              <% else %>
+               <%= image_tag 'no_image.jpg', size: '113x70' %>
+              <% end %>
+              <%= user.user_name %>
+            <% end %>
+          </td>
+          <td>フォロー数: <%= user.followings.count %></td>
+          <td>フォロワー数: <%= user.followers.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>フォローユーザーはいません</p>
+  <% end %>
+  <div class="col text-center ">
+    <%= link_to "戻る", :back, class: "btn btn-outline-primary" %>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 class Users::UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @users = User.all
     @user = current_user
@@ -38,7 +40,7 @@ class Users::UsersController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :user_image, :user_name, :text, :is_deleted )
+    params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :profile_image, :user_name, :text, :is_deleted )
   end
 
 

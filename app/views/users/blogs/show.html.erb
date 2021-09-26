@@ -1,29 +1,32 @@
-<div>
-  <h2>管理人ブログ</h2>
-  <div>
-    <%= image_tag @blog.blog_image %>
-  </div>
-  <div>
-    <%= @blog.title %>
-    評価：<%#=  %>
-  </div>
-  <div>
-    <%= @blog.text %>
-  </div>
-  <div>
+<div class="container col-9 mt-4 mb-5">
+  <h2 class="col text-center"><%= @blog.title %></h2>
+  <div class="my-3 col-8 offset-2 text-center">
     <div>
+      <%= image_tag @blog.blog_image %>
+    </div>
+    <div class="my-4">
+      <h4 class="mb-4"><%= @blog.text %></h4><br>
+      作成日：<%= @blog.created_at.strftime('%Y/%m/%d %H:%M') %>&emsp;
+      更新日：<%= @blog.updated_at.strftime('%Y/%m/%d %H:%M') %>
+    </div>
+    <div class="mb-5">
+      評価：<%#=  %><br>
+    </div>
+    <div class="mb-5">
       <%= render "users/blog_comments/blog_comments", blog: @blog, blog_comment: @blog_comment %>
     </div>
-  </div>
-  <div>
-    <%= form_with model:[@blog, @blog_comment], local: true do |f| %>
-      <%= f.label :comment, "コメント投稿" %>
-      <%= f.text_area :comment, :placeholder => "コメント内容" %><br>
-      <%= f.submit "投稿" %>
-    <% end %>
-  </div>
-  <div>
-    <%= link_to "マイページ", user_path %>
-    <%= link_to "管理人ブログ一覧", blogs_path %>
+    <div>
+      <%= form_with model:[@blog, @blog_comment], local: true do |f| %>
+        <%= f.label :comment, "コメント投稿" %><br>
+        <%= f.text_area :comment, size: "60x5" , :placeholder => "コメントを入力" %><br>
+        <div class="my-4">
+          <%= f.submit "投稿", class: "btn btn-outline-success" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="my-5">
+      <%= link_to "管理人ブログ一覧", blogs_path, class: "mx-3 btn btn-outline-primary" %>&emsp;&emsp;
+      <%= link_to "マイページ", user_path, class: "mx-3 btn btn-outline-primary" %>
+    </div>
   </div>
 </div>
