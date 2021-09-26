@@ -1,21 +1,21 @@
 <div class="container col-8">
-  <div class="text-center">
-    イメージ画像
-    <div class="text-center">キャッチフレーズ</div>
-  </div>
-  <div class="text-center my-4">
-    <h2>RidersCommunitySiteとは・・・</h2><br>
-    全てのバイクを愛する人たちのためのコミュニティサイトです<br>
-    自身の写真を投稿したり、みんなの投稿にいいねをつけたりコメントすることができます<br>
-    投稿以外にも気軽にチャットできる掲示板もありますので、気軽に参加してみましょう<br>
-    会員ではない方も管理者ブログを見ることができます<br>
-    あなたの愛車を皆に共有し、語り合いませんか？<br>
+
+  <div class="text-center mt-5">
+    <h1>RidersCommunitySiteとは・・・</h1>
+    <div class="text-center">
+      <%= image_tag 'about001.jpg', size: '600x400' %>
+    </div>
+    全てのバイクを愛する人たちのためのコミュニティサイトです<br><br>
+    自身の写真を投稿したり、みんなの投稿にいいねをつけたりコメントすることができます<br><br>
+    投稿以外にも気軽にチャットできる掲示板もありますので、気軽に参加してみましょう<br><br>
+    会員ではない方も管理者ブログを見ることができます<br><br>
+    あなたの愛車を皆に共有し、バイクが好きな人たちと交流しませんか？<br><br>
   </div>
   <div class="row center-block my-5">
-    <div class="col offset-1">
+    <div class="col offset-1 my-4">
       <%= link_to "新規会員登録はこちらから", new_user_registration_path, class: "btn btn-outline-success" %>
     </div>
-    <div class="col offset-1">
+    <div class="col offset-1 my-4">
       <%= link_to "会員ログインはこちらから", new_user_session_path, class: "btn btn-outline-primary" %>
     </div>
   </div>
