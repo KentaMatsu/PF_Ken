@@ -8,7 +8,7 @@
       <%= render "users/search/search_form" %>
       <% @posts.each do |post| %>
       <div class="mb-4 border">
-        <div class="row mb-2">
+        <div class="row mb-2 ml-1">
           <% if @user.profile_image.attached? %>
             <%= image_tag @user.profile_image.variant(resize: '97x60') %>
           <% end %>
@@ -17,7 +17,7 @@
             <%= post.user.user_name %>
           <% end %>
         </div>
-        <div class="row">
+        <div class="row ml-1">
           <div>
             <%= link_to post_path(post.id) do %>
               <% if post.post_image.attached? %>
@@ -28,7 +28,7 @@
           <div class="ml-4">
             <div>
               <%= link_to post_path(post.id) do %>
-                <h4><%= post.title %></h4>
+                <h4 class="post_title"><%= post.title %></h4>
               <% end %>
             </div>
             <div class="my-3">

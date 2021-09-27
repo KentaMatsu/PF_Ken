@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     get 'done', to: 'contacts#done', as: 'done'
 
     resources :blogs, only: [:index, :show] do
-      resources :blog_comments, only: [:create, :destroy]
+      resources :blog_comments, only: [:index, :create, :destroy]
     end
 
   end

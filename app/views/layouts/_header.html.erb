@@ -15,6 +15,9 @@
         <!-- ユーザーログイン時 -->
         <% if user_signed_in? %>
           <li class="nav-item">
+            <p class="mr-3">ようこそ <%= current_user.user_name %> さん</p>
+          </li>
+          <li class="nav-item">
             <%= link_to user_path(current_user) do %>
               <i class="far fa-user mx-2">マイページ</i>
             <% end %>

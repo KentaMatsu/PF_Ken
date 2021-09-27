@@ -9,24 +9,70 @@
       作成日：<%= @blog.created_at.strftime('%Y/%m/%d %H:%M') %>&emsp;
       更新日：<%= @blog.updated_at.strftime('%Y/%m/%d %H:%M') %>
     </div>
-    <div class="mb-5">
-      評価：<%#=  %><br>
-    </div>
-    <div class="mb-5">
-      <%= render "users/blog_comments/blog_comments", blog: @blog, blog_comment: @blog_comment %>
-    </div>
-    <div>
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-5">
+            <div class="card mb-6">
+              <header class="card-header">
+                評価
+              </header>
+              <div class="card-content">
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width: <%= @blog.review_score_percentage %>%">★★★★★</div>
+                    <div class="star-rating-back">★★★★★</div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                    <%= @blog.avg_score %>点（<%= @blog.blog_comments.count %>件のレビュー）
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if @blog_comment.errors.any? %>
+        <div class="notification is-danger">
+          <h2><%= @blog_comment.errors.count %>件のエラーがあります。</h2>
+          <ul>
+            <% @blog_comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div>
       <%= form_with model:[@blog, @blog_comment], local: true do |f| %>
-        <%= f.label :comment, "コメント投稿" %><br>
+        <h5><p class="mt-5"><%= f.label :comment, "評価・コメント投稿" %></h5>
+        <div class="rating-box mt-3 mb-4">
+          <div class="main-rating">
+            <div class="ratings mb-3">
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+              <span class="fa fa-star-o" id="star"></span>
+            </div>
+            <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+          </div>
+          <%= f.hidden_field :ramen_shop_id, value: @blog.id %>
+          <%= f.hidden_field :score, id: "rating-value" %>
+        </div>
         <%= f.text_area :comment, size: "60x5" , :placeholder => "コメントを入力" %><br>
         <div class="my-4">
           <%= f.submit "投稿", class: "btn btn-outline-success" %>
         </div>
       <% end %>
+      </div>
+    <div class="mb-5">
+      <%= render "users/blog_comments/blog_comments", blog: @blog, blog_comment: @blog_comment %>
     </div>
     <div class="my-5">
       <%= link_to "管理人ブログ一覧", blogs_path, class: "mx-3 btn btn-outline-primary" %>&emsp;&emsp;
-      <%= link_to "マイページ", user_path, class: "mx-3 btn btn-outline-primary" %>
+      <%= link_to "評価一覧", blog_blog_comments_path(@blog.id), class: "mx-3 btn btn-outline-success" %>
     </div>
   </div>
 </div>
+
+
+<%= javascript_include_tag "users/blog_comments.js" %>
