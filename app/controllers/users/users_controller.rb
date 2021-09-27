@@ -3,8 +3,8 @@ class Users::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
     @user = current_user
+    @users = User.page(params[:page]).per(8).reverse_order
   end
 
   def show

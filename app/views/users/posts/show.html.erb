@@ -21,7 +21,7 @@
         <h5><%= @post.text %></h5>
       </div>
       <div class="row my-4 ml-1">
-        いいね：<%= render "users/likes/likes", post: @post %>&emsp;&emsp;
+        いいね：<div id="likes_buttons_<%= @post.id %>"><%= render "users/likes/likes", post: @post %></div>&emsp;&emsp;
         コメント数：<%= @post.post_comments.count %>
       </div>
       <div>

@@ -3,8 +3,7 @@ class Users::ChatRoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #@chat_room = Chat_room.new
-    @chat_rooms = ChatRoom.all
+    @chat_rooms = ChatRoom.page(params[:page]).per(10).reverse_order
   end
 
   def show
@@ -26,7 +25,7 @@ class Users::ChatRoomsController < ApplicationController
   end
 
   def destroy
-    @chat_room = Chat_room.find(params[:id])
+    @chat_room = ChatRoom.find(params[:id])
     @chat_room.destroy
     redirect_to chat_rooms_path
   end

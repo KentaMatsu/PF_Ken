@@ -36,6 +36,9 @@
     </tr>
     <% end %>
   </table>
+  <div class="col-5 text-center">
+    <%= paginate @chat_rooms %>
+  </div>
   <div class="container col-8 my-5">
     <%= render "users/chat_rooms/create_rooms" %>
   </div>

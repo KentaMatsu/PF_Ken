@@ -22,6 +22,9 @@
       作成日：<%= blog.created_at.strftime('%Y/%m/%d %H:%M') %>&emsp;
       更新日：<%= blog.updated_at.strftime('%Y/%m/%d %H:%M') %>
     </div>
+    <div class="col text-center">
+      <%= paginate @blogs %>
+    </div>
   </div>
   <% end %>
 </div>
