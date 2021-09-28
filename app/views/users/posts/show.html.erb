@@ -7,22 +7,24 @@
       <div class="mb-4">
         <%= image_tag @post.post_image.variant(resize: '534x330') %>
       </div>
-      <div class="row ml-1">
-        <h3><%= @post.title %></h3>
-        <% if @post.user_id == current_user.id %>
-          <%= link_to "編集", edit_post_path, class: "mx-5 btn btn-outline-primary" %>
-          <%= link_to "投稿削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-outline-danger" %>
-        <% end %>
-      </div>
-      <div class="ml-1">
-        投稿日：<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
-      </div>
-      <div class="my-3">
-        <h5><%= @post.text %></h5>
-      </div>
-      <div class="row my-4 ml-1">
-        いいね：<%= render "users/likes/likes", post: @post %>&emsp;&emsp;
-        コメント数：<%= @post.post_comments.count %>
+      <div class="post_show_w utable">
+        <div class="row ml-1 my-3">
+          <h3><%= @post.title %></h3>
+          <% if @post.user_id == current_user.id %>
+            <%= link_to "編集", edit_post_path, class: "mx-5 btn btn-outline-primary" %>
+            <%= link_to "投稿削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-outline-danger" %>
+          <% end %>
+        </div>
+        <div class="ml-1">
+          投稿日：<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </div>
+        <div class="my-3">
+          <h5><%= @post.text %></h5>
+        </div>
+        <div class="row my-4 ml-1">
+          いいね：<div id="likes_buttons_<%= @post.id %>"><%= render "users/likes/likes", post: @post %></div>&emsp;&emsp;
+          コメント数：<%= @post.post_comments.count %>
+        </div>
       </div>
       <div>
         <div>

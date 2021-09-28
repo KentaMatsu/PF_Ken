@@ -12,15 +12,27 @@
       <% end %>
     </div>
     <% end %>
-    <div class="mt-3 mb-5">
+    <div class="utable mx-4 mt-3 mb-5">
       <%= link_to blog_path(blog) do %>
         <h4><%= blog.title %></h4><br>
       <% end %>
-      評価：<!-- 後で追加 --><br>
+      評価
+      <div class="content d-flex justify-content-center">
+        <div class="content average-score">
+          <div class="star-rating mb-2">
+            <div class="star-rating-front" style="width: <%= (blog.avg_score/5)*100 %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <%= blog.avg_score %>点（<%= blog.blog_comments.count %>件のレビュー）<br>
       コメント数：<%= blog.blog_comments.count %><br>
       <br>
       作成日：<%= blog.created_at.strftime('%Y/%m/%d %H:%M') %>&emsp;
       更新日：<%= blog.updated_at.strftime('%Y/%m/%d %H:%M') %>
+    </div>
+    <div class="col text-center">
+      <%= paginate @blogs %>
     </div>
   </div>
   <% end %>
