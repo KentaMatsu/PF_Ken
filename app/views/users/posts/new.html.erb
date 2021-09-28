@@ -3,6 +3,7 @@
     <h2 class="col text-center">新規投稿</h2>
   </div>
   <%= form_with model: @post, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <table class="table">
     <tr>
       <th><%= f.label :post_image, "投稿画像" %></th>

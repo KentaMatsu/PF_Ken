@@ -14,6 +14,7 @@
       <h5>コメント作成</h5>
     </div>
     <%= form_with model:[@chat_room, @chat], method: :post, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="my-4">
       <%= f.label :response, "コメント" %>
       <%= f.text_field :response %>

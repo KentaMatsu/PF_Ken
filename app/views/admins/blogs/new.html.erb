@@ -3,6 +3,7 @@
     <h2>新規ブログ投稿</h2>
   </div>
   <%= form_with model: @blog, url: admins_blogs_path, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <table>
     <tr>
       <th><%= f.label :blog_image, "投稿画像" %></th>

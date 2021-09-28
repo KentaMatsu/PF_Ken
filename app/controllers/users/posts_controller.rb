@@ -9,8 +9,7 @@ class Users::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    p @post
-    if @post.save!
+    if @post.save
       #flash[:notice] = "You have created book successfully."
       redirect_to post_path(@post)
     else

@@ -1,44 +1,46 @@
-<div>
-  <div>
-    <%= @user.full_name %>さんの詳細
+<div class="container">
+  <div class="row">
+    <div class="col-7 my-5">
+      <h2 class="mb-4"><%= @user.full_name %>さんの詳細</h2>
+      <table class="table table-striped">
+        <tr>
+          <th>ユーザーID</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @user.full_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @user.full_kana_name %></td>
+        </tr>
+        <tr>
+          <th>ユーザーネーム</th>
+          <td><%= @user.user_name %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td>
+            <% if @user.is_deleted == true%>
+              <p class="text-secondary">退会済</p>
+            <% else %>
+              <p class="text-success">有効</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <%= link_to "編集", edit_admins_user_path, class: "btn btn-success" %>
+        <%= link_to "ユーザー一覧", admins_users_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="col-4 offset-1 my-5">
+      <%= render "admins/admin/menu" %>
+    </div>
   </div>
-  <table>
-    <tr>
-      <th>ユーザーID</th>
-      <td><%= @user.id %></td>
-    </tr>
-    <tr>
-      <th>氏名</th>
-      <td><%= @user.full_name %></td>
-    </tr>
-    <tr>
-      <th>フリガナ</th>
-      <td><%= @user.full_kana_name %></td>
-    </tr>
-    <tr>
-      <th>ユーザーネーム</th>
-      <td><%= @user.user_name %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @user.email %></td>
-    </tr>
-    <tr>
-      <th>ステータス</th>
-      <td>
-        <% if @user.is_deleted == true%>
-          <p class="text-secondary">退会済</p>
-        <% else %>
-          <p class="text-success">有効</p>
-        <% end %>
-      </td>
-    </tr>
-  </table>
-  <div>
-    <%= link_to "編集", edit_admins_user_path %>
-    <%= link_to "ユーザー一覧", admins_users_path %>
-  </div>
-</div>
-<div>
-  <%= render "admins/admin/menu" %>
 </div>

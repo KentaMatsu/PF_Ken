@@ -1,10 +1,13 @@
-<div>
-  <div>
-    <div>
+<div class="container col-9">
+  <div class="row mx-5 my-4">
+    <div class="my-4 mx-4">
       <%= @user.full_name %>さんの情報編集
     </div>
+    <div class="my-4">
+      <%= link_to "もどる", admins_user_path(@user), class: "btn btn-primary"  %>
+    </div>
     <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
-    <table>
+    <table class="table">
       <tr>
         <th><%= f.label :ユーザーID %></th>
         <td><%= @user.id %></td>
@@ -36,7 +39,7 @@
       </tr>
     </table>
     <div>
-      <%= f.submit "保存" %>
+      <%= f.submit "保存", class: "btn btn-success" %>
     </div>
     <% end %>
   </div>

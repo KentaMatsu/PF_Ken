@@ -22,13 +22,15 @@ Rails.application.routes.draw do
 
 
     get '/users/check' => "users#check", as: 'users_check'
+    patch '/users/hide' => "users#hide", as: 'users_hide'
+
     resources :users, only: [:index, :show, :edit, :update, ] do
       resource :relationships, onry: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    patch '/users/hide' => "users#hide", as: 'users_hide'
+
 
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
