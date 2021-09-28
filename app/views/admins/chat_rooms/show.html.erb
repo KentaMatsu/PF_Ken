@@ -1,17 +1,23 @@
-<div>
-  <div>
-    <div>
-      <%= @chat_room.room_name %>
+<div class="container">
+  <div class="row">
+    <div class="col-7 my-5">
+      <div>
+        <div class="my-4">
+          <%= @chat_room.room_name %>
+        </div>
+        <div class="my-4">
+          作成者：<%= @chat_room.user.user_name %>
+        </div>
+        <div class="my-4">
+          <%= link_to "一覧にもどる", admins_chat_rooms_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+      <div>
+        <%= render "admins/chats/users_chats", chat_room: @chat_room %>
+      </div>
     </div>
-    <div>
-      作成者：<%= @chat_room.user.user_name %>
-    </div>
-    <div>
-      <%= link_to "一覧にもどる", admins_chat_rooms_path %>
+    <div class="col-4 offset-1 my-5">
+      <%= render "admins/admin/menu" %>
     </div>
   </div>
-  <%= render "admins/chats/users_chats", chat_room: @chat_room %>
-</div>
-<div>
-  <%= render "admins/admin/menu" %>
 </div>

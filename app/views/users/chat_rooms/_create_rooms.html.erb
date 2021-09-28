@@ -3,6 +3,7 @@
     <h4>新規スレッド作成</h4>
   </div>
   <%= form_with model:ChatRoom, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="my-4">
     <%= f.label :room_name, "スレッドタイトル" %>
     <%= f.text_field :room_name %>

@@ -1,26 +1,28 @@
-<div>
-  <div>
-    記事詳細
-    <div>
-      <%= link_to admins_user_path(@post.user.id) do %>
-        <% if @post.user.profile_image.attached? %>
-          <%= image_tag @post.user.profile_image.variant(resize: '130x100') %>
-        <% else %>
-          <%= image_tag 'no_image.jpg', size: '130x100' %>
+<div class="container">
+  <div class="row">
+    <div class="col-7 my-5">
+      <h2 class="mb-4">記事詳細</h2>
+      <div class="my-3">
+        <%= link_to admins_user_path(@post.user.id) do %>
+          <% if @post.user.profile_image.attached? %>
+            <%= image_tag @post.user.profile_image.variant(resize: '130x100') %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: '130x100' %>
+          <% end %>
+          <%= @post.user.user_name %>
         <% end %>
-        <%= @post.user.user_name %>
-      <% end %>
+      </div>
+      <div>
+        <%= @post.title %><br>
+        <% if @post.post_image.attached? %>
+          <%= image_tag @post.post_image.variant(resize: '130x100') %>
+        <% end %><br>
+        <%= @post.text %>
+      </div>
+      <%= render "admins/post_comments/users_comments", post: @post %>
     </div>
-    <div>
-      <%= @post.title %><br>
-      <% if @post.post_image.attached? %>
-        <%= image_tag @post.post_image.variant(resize: '130x100') %>
-      <% end %><br>
-      <%= @post.text %>
+    <div class="col-4 offset-1 my-5">
+      <%= render "admins/admin/menu" %>
     </div>
-    <%= render "admins/post_comments/users_comments", post: @post %>
   </div>
-</div>
-<div>
-  <%= render "admins/admin/menu" %>
 </div>

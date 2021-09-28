@@ -3,12 +3,7 @@ class Users::ChatRoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if sort_params.present?
-      @chat_rooms = ChatRoom.sort_chat_rooms(sort_params).page(params[:page]).per(10)
-    else
-      @chat_rooms = ChatRoom.page(params[:page]).per(10).reverse_order
-    end
-    @sort_list = ChatRoom.sort_list
+    @chat_rooms = ChatRoom.page(params[:page]).per(10).reverse_order
   end
 
   def show

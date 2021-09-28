@@ -3,6 +3,7 @@
     <h2 class="col text-center">投稿編集画面</h2>
   </div>
   <%= form_with model: @post, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <table class="table">
     <tr>
       <th>

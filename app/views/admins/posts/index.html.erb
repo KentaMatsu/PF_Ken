@@ -1,31 +1,31 @@
-<div>
-  <div>
-    ユーザー投稿記事一覧
-  </div>
-  <% @posts.each do |post| %>
-  <div>
-    <div>
-    <%= link_to admins_user_path(post.user.id) do %>
-      <% if post.user.profile_image.attached? %>
-        <%= image_tag post.user.profile_image.variant(resize: '130x100') %>
-      <% else %>
-        <%= image_tag 'no_image.jpg', size: '130x100' %>
+<div class="container">
+  <div class="row">
+    <div class="col-7 my-5">
+      <h2 class="mb-4">ユーザー投稿記事一覧</h2>
+      <% @posts.each do |post| %>
+      <div class="my-4">
+        <div>
+          <%= link_to admins_user_path(post.user.id) do %>
+            <% if post.user.profile_image.attached? %>
+              <%= image_tag post.user.profile_image.variant(resize: '130x100') %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: '130x100' %>
+            <% end %>
+            <%= post.user.user_name %>
+          <% end %>
+          <%= link_to admins_post_path(post.id) do %>
+            <% if post.post_image.attached? %>
+              <%= image_tag post.post_image.variant(resize: '130x100') %>
+            <% end %>
+            <%= post.title %>
+          <% end %>
+          <%= link_to "投稿削除", admins_post_path(post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
+        </div>
+      </div>
       <% end %>
-      <%= post.user.user_name %>
-    <% end %>
     </div>
-    <div>
-    <%= link_to admins_post_path(post.id) do %>
-      <% if post.post_image.attached? %>
-        <%= image_tag post.post_image.variant(resize: '130x100') %>
-      <% end %>
-      <%= post.title %>
-    <% end %>
+    <div class="col-4 offset-1 my-5">
+      <%= render "admins/admin/menu" %>
     </div>
   </div>
-  <%= link_to "投稿削除", admins_post_path(post), method: :delete, "data-confirm" => "本当に消しますか?" %>
-  <% end %>
-</div>
-<div>
-  <%= render "admins/admin/menu" %>
 </div>
