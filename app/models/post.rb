@@ -10,6 +10,7 @@ class Post < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
+  validates :post_image, presence: true, blob: { content_type: :image }
   validates :title, presence: true
   validates :text, presence: true
 

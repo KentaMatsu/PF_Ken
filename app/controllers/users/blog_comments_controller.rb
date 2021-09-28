@@ -2,6 +2,11 @@ class Users::BlogCommentsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def index
+    @blog = Blog.find(params[:blog_id])
+    @blog_comments = @blog.blog_comments
+  end
+
   def create
     @blog = Blog.find(params[:blog_id])
     blog_comment = BlogComment.new(blog_comment_params)
@@ -10,7 +15,8 @@ class Users::BlogCommentsController < ApplicationController
     if blog_comment.save!
       redirect_to blog_path(@blog)
     else
-      render 'error'
+      @blog = Blog.find(params[:id])
+      render 'users/blogs/show'
     end
   end
 
@@ -24,7 +30,7 @@ class Users::BlogCommentsController < ApplicationController
   private
 
   def blog_comment_params
-    params.require(:blog_comment).permit(:comment)
+    params.require(:blog_comment).permit(:comment, :evaluation)
   end
 
 end

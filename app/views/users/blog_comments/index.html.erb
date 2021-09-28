@@ -1,0 +1,43 @@
+<div class="container col-8 my-4">
+  <div class="">
+    <div class="is-5">
+      <div class="card mb-6">
+        <header class="card-header">
+          <p class="card-header-title">
+            <strong><%= @blog.title %></strong>
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content average-score">
+            <div class="star-rating mb-2">
+              <div class="star-rating-front" style="width: <%= @blog.review_score_percentage %>%">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+            <div class="average-score-display ml-3 pt-2">
+              <%= @blog.avg_score %>点（<%= @blog.blog_comments.count %>件のレビュー）
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table is-fullwidth has-text-centered">
+        <thead>
+          <tr>
+            <th>ユーザー</th><th>点数</th><th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @blog_comments.each do |blog_comment| %>
+            <tr>
+              <td><%= blog_comment.user.user_name %></td>
+              <td><%= blog_comment.evaluation %></td>
+              <td><%= blog_comment.comment %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="col text-center">
+        <%= link_to "ブログに戻る", blog_path(@blog.id), class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

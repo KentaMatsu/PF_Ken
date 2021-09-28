@@ -20,7 +20,7 @@ class Users::PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(5).reverse_order
   end
 
   def show
