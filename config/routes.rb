@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     get '/search' => 'search#search'
 
+
     get '/users/check' => "users#check", as: 'users_check'
     resources :users, only: [:index, :show, :edit, :update, ] do
       resource :relationships, onry: [:create, :destroy]
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
     resources :chat_rooms, only: [:create, :index, :show, :destroy] do
       resources :chats, only: [:create, :destroy]
     end
+    get 'sort' => 'chat_rooms#sort'
 
     resources :contacts, only: [:new, :create]
     post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'

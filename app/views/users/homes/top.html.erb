@@ -22,21 +22,35 @@
       </div>
     </div>
   <% end %>
+  <% if user_signed_in? %>
   <div class="col text-center">
-    <div class="">
-      <h4>ユーザー投稿</h4>
-    </div>
-    <div class="">
-      <h4>掲示板</h4>
-    </div>
-    <div class="">
-      <h4>管理人ブログ</h4>
-    </div>
-    <div class="">
-      <h4>お知らせ</h4>
-    </div>
-    <div class="">
-      <h4>お問い合わせ</h4>
-    </div>
+    <%= link_to users_path do %>
+      <h4 class="home_c">ユーザー一覧</h4>
+    <% end %>
+    <%= link_to posts_path do %>
+      <h4 class="home_c">投稿一覧</h4>
+    <% end %>
+    <%= link_to chat_rooms_path do %>
+      <h4 class="home_c">掲示板</h4>
+    <% end %>
+    <%= link_to blogs_path do %>
+      <h4 class="home_c">管理人ブログ</h4>
+    <% end %>
+    <%= link_to home_about_path do %>
+      <h4 class="home_c">About</h4>
+    <% end %>
+    <%= link_to new_contact_path do %>
+      <h4 class="home_c">お問い合わせ</h4>
+    <% end %>
   </div>
+  <% else %>
+  <div class="col text-center">
+    <%= link_to home_about_path do %>
+      <h4 class="home_c">AAbout</h4>
+    <% end %>
+    <%= link_to new_contact_path do %>
+      <h4 class="home_c">お問い合わせ</h4>
+    <% end %>
+  </div>
+  <% end %>
 </div>

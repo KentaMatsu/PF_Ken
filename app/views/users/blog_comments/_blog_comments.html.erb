@@ -1,6 +1,6 @@
-<p class="mt-4 mb-3">コメント欄</p>
+<p class="mt-4 mb-3">評価・コメント欄</p>
 <% blog.blog_comments.each do |blog_comment| %>
-<div class="container border mb-4">
+<div class="container border mb-4 utable">
   <div class="row">
     <% if blog_comment.user.profile_image.attached? %>
       <%= image_tag blog_comment.user.profile_image.variant(resize: '65x40') %>&emsp;&emsp;
@@ -16,11 +16,11 @@
     <div class="content">
       <div class="content average-score">
         <div class="star-rating mb-2">
-          <div class="star-rating-front" style="width: <%= @blog.review_score_percentage %>%">★★★★★</div>
+          <div class="star-rating-front" style="width: <%= (blog_comment.evaluation/5)*100 %>%">★★★★★</div>
           <div class="star-rating-back">★★★★★</div>
         </div>
         <div class="average-score-display ml-3 pt-2">
-          <%= @blog.avg_score %>点
+          <%= blog_comment.evaluation %>点
         </div>
       </div>
     </div>

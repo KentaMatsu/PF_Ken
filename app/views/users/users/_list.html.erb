@@ -1,49 +1,51 @@
-<h2 class="col text-center">ユーザー情報</h2>
-<div class="border my-4">
-  <div class="col text-center my-4">
-    <%= link_to user_path(user.id) do %>
-      <% if user.profile_image.attached? %>
-        <%= image_tag user.profile_image.variant(resize: '243x150') %>
-      <% else %>
-       <%= image_tag 'no_image.jpg', size: '243x150' %>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="col text-center">
-    <%= link_to user_path(user.id) do %>
-      <%= user.user_name %>
-    <% end %>
-    <% if user == current_user %>
-        <%= link_to "編集", edit_user_path(@user.id), class: "ml-4 btn btn-outline-primary" %>
-      </div>
-    <% end %>
-  <div class="my-5">
-    <div>
-      <%= user.text %>
-    </div>
-    <div class="my-3">
-      <div>
-        <%= link_to user_followings_path(user.id) do %>
-          フォロー：<%= user.followings.count %>
+<div class="utable">
+  <h2 class="col text-center">ユーザー情報</h2>
+  <div class="border my-4">
+    <div class="col text-center my-4">
+      <%= link_to user_path(user.id) do %>
+        <% if user.profile_image.attached? %>
+          <%= image_tag user.profile_image.variant(resize: '243x150') %>
+        <% else %>
+         <%= image_tag 'no_image.jpg', size: '243x150' %>
         <% end %>
-      </div>
-      <div>
-        <%= link_to user_followers_path(user.id) do %>
-          フォロワー：<%= user.followers.count %>
-        <% end %>
-      </div>
-    </div>
-    <div class="my-3">
-    <% unless current_user == user %>
-      <% if current_user.following?(user) %>
-        <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
       <% end %>
-    <% end %>
     </div>
-    <div class="col text-center my-4 ">
-      <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-primary" %>
+    <div class="col text-center">
+      <%= link_to user_path(user.id) do %>
+        <%= user.user_name %>
+      <% end %>
+      <% if user == current_user %>
+          <%= link_to "編集", edit_user_path(@user.id), class: "ml-4 btn btn-outline-primary" %>
+        </div>
+      <% end %>
+    <div class="my-5">
+      <div>
+        <%= user.text %>
+      </div>
+      <div class="my-3">
+        <div>
+          <%= link_to user_followings_path(user.id) do %>
+            フォロー：<%= user.followings.count %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to user_followers_path(user.id) do %>
+            フォロワー：<%= user.followers.count %>
+          <% end %>
+        </div>
+      </div>
+      <div class="my-3">
+      <% unless current_user == user %>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+        <% end %>
+      <% end %>
+      </div>
+      <div class="col text-center my-4 ">
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-success" %>
+      </div>
     </div>
   </div>
 </div>

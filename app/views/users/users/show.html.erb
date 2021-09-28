@@ -3,7 +3,7 @@
     <div class="col-7 my-5">
       <h2 class="mb-4"><%= @user.user_name %>の投稿</h2>
       <% @posts.each do |post| %>
-      <div class="row mb-5 border">
+      <div class="utable row mb-5 border">
         <div class="mr-4">
           <%= link_to post_path(post.id) do %>
             <% if post.post_image.attached? %>
@@ -14,7 +14,7 @@
         <div>
           <div>
             <%= link_to post_path(post.id) do %>
-              <h4><%= post.title %></h4>
+              <h4 class="post_show"><%= post.title %></h4>
             <% end %>
           </div>
           <div class="my-3">
