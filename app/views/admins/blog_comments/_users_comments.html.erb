@@ -1,7 +1,7 @@
 <div class="container col my-5">
   ユーザーコメント
   <% blog.blog_comments.each do |blog_comment| %>
-  <div class="my-3 border row">
+  <div class="utable my-3 border row">
   <%= link_to admins_user_path(blog_comment.user) do %>
     <div class="my-3">
       <% if blog_comment.user.profile_image.attached? %>

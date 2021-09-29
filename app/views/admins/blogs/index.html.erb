@@ -4,7 +4,7 @@
       <h2 class="mb-3">管理者ブログ一覧</h2>
       <%= link_to "新規投稿", new_admins_blog_path, class: "btn btn-success" %>
       <% @blogs.each do |blog| %>
-      <div class="my-4 border">
+      <div class="utable my-4 border">
         <%= link_to admins_blog_path(blog.id) do %>
         <div>
           <div>
