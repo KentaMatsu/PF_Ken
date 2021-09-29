@@ -2,8 +2,8 @@
   <div class="border mb-3">
     <div class="ml-1 row">
       <div>
-        <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image.variant(resize: '70x50') %>
+        <% if post_comment.user.profile_image.attached? %>
+          <%= image_tag post_comment.user.profile_image.variant(resize: '70x50') %>
         <% else %>
           <%= image_tag 'no_image.jpg', size: '70x50' %>
         <% end %>
