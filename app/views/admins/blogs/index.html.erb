@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-7 my-5 text-center">
-      <h2>管理者ブログ一覧</h2>
+      <h2 class="mb-3">管理者ブログ一覧</h2>
       <%= link_to "新規投稿", new_admins_blog_path, class: "btn btn-success" %>
       <% @blogs.each do |blog| %>
-      <div class="my-4">
+      <div class="my-4 border">
         <%= link_to admins_blog_path(blog.id) do %>
         <div>
           <div>
@@ -12,17 +12,17 @@
               <%= image_tag blog.blog_image %>
             <% end %>
           </div>
-          <div>
-            <%= blog.title %>
+          <div class="my-4">
+            タイトル：<%= blog.title %>
           </div>
         </div>
         <% end %>
         <div>
-          <%= link_to "編集", edit_admins_blog_path(blog.id), class: "btn btn-success" %>
+          <%= link_to "編集", edit_admins_blog_path(blog.id), class: "btn btn-success" %>&emsp;&emsp;
           <%= link_to "削除", admins_blog_path(blog.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
         </div>
-        <div>
-          <%#= 評価:<br> %>
+        <div class="my-4">
+          評価：<%= blog.avg_score %>&emsp;&emsp;
           コメント数：<%= blog.blog_comments.count %>
         </div>
       </div>

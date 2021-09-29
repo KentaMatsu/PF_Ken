@@ -1,7 +1,7 @@
 <div class="container col my-5">
   ユーザーコメント
   <% blog.blog_comments.each do |blog_comment| %>
-  <div class="my-3">
+  <div class="my-3 border row">
   <%= link_to admins_user_path(blog_comment.user) do %>
     <div class="my-3">
       <% if blog_comment.user.profile_image.attached? %>
@@ -9,11 +9,12 @@
       <% else %>
         <%= image_tag 'no_image.jpg', size: '70x50' %>
       <% end %>
-      <%= blog_comment.user.user_name %>
+      ユーザーネーム：<%= blog_comment.user.user_name %>&emsp;
     </div>
     <% end %>
-    <div class="my-3">
-      コメント：<%= blog_comment.comment %>
+    <div class="mt-4">
+      コメント：<%= blog_comment.comment %>&emsp;
+      評価：<%= blog_comment.evaluation %>&emsp;
       <%= link_to '削除', admins_blog_blog_comment_path(blog_comment.blog_id, blog_comment.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
     </div>
   </div>

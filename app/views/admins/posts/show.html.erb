@@ -9,15 +9,15 @@
           <% else %>
             <%= image_tag 'no_image.jpg', size: '130x100' %>
           <% end %>
-          <%= @post.user.user_name %>
+          ユーザーネーム:<%= @post.user.user_name %>
         <% end %>
       </div>
       <div>
-        <%= @post.title %><br>
+        タイトル：<%= @post.title %><br>
         <% if @post.post_image.attached? %>
-          <%= image_tag @post.post_image.variant(resize: '130x100') %>
+          <%= image_tag @post.post_image.variant(resize: '300x240') %>
         <% end %><br>
-        <%= @post.text %>
+        コメント：<%= @post.text %>
       </div>
       <%= render "admins/post_comments/users_comments", post: @post %>
     </div>

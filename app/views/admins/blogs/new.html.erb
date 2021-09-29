@@ -1,10 +1,10 @@
-<div>
-  <div>
-    <h2>新規ブログ投稿</h2>
+<div class="container">
+  <div class="row my-4">
+    <h2 class="col text-center">新規ブログ投稿</h2>
   </div>
   <%= form_with model: @blog, url: admins_blogs_path, local: true do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-  <table>
+  <table class="table">
     <tr>
       <th><%= f.label :blog_image, "投稿画像" %></th>
       <td><%= f.file_field :blog_image %></td>
@@ -18,9 +18,9 @@
       <td><%= f.text_field :text %></td>
     </tr>
   </table>
-  <div>
+  <div class="my-5 col text-center">
     <%= f.submit '投稿' %>
-  </div>
+  </div class="my-5 col text-center">
   <% end %>
-  <%= link_to "ブログ一覧", admins_blogs_path %>
+  <%= link_to "ブログ一覧", admins_blogs_path(@blog), class: "btn btn-outline-primary" %>
 </div>

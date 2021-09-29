@@ -1,10 +1,10 @@
-<div>
-  <div>
-    <h2>ブログ編集画面</h2>
+<div class="container">
+  <div class="row my-4">
+    <h2 class="col text-center">ブログ編集画面</h2>
   </div>
   <%= form_with model: @blog, url: admins_blog_path, method: :patch, local: true do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-  <table>
+  <table class="table">
     <tr>
       <th><%= f.label :blog_image, "投稿画像" %></th>
       <td><%= f.file_field :blog_image %></td>
@@ -18,12 +18,12 @@
       <td><%= f.text_field :text %></td>
     </tr>
   </table>
-  <div>
+  <div class="my-5 col text-center">
     <%= f.submit '更新' %>
   </div>
   <% end %>
-  <div>
-    <%= link_to "ブログ詳細にもどる", admins_blog_path %>
+  <div class="my-5 col text-center">
+    <%= link_to "ブログ詳細にもどる", admins_blog_path(@blog), class: "btn btn-outline-primary" %>
   </div>
 </div>
 

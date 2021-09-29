@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-7 my-5 text-center">
-      <h2>ブログ詳細</h2>
+      <h2 class="mb-4">ブログ詳細</h2>
       <div>
         <%= image_tag @blog.blog_image %>
       </div>
-      <div>
+      <div class="my-4">
         <%= @blog.title %>
         <%= link_to "編集", edit_admins_blog_path, class: "btn btn-success" %>
         <%= link_to "投稿削除", admins_blog_path(@blog), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
       </div>
-      <div>
-        <%= @blog.text %>
+      <div class="mb-3">
+        コメント：<%= @blog.text %>
       </div>
       <div>
-        <%#= 評価：%>
+        評価：<%= @blog.avg_score %>
       </div>
       <div>
         <%= render "admins/blog_comments/users_comments", blog: @blog, blog_comment: @blog_comment %>
