@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7 my-5 text-center">
+      <h2 class="mb-3">問合せ詳細</h2>
+      <div class="border card">
+        名前：<%= @contact.name %><br>
+        メールアドレス：<%= @contact.email %><br>
+        作成日：<%= @contact.created_at.strftime('%Y/%m/%d %H:%M') %><br><br>
+        内容：<%= @contact.title %><br>
+        コメント：<%= @contact.message %><br>
+      </div>
+      <div class="my-4">
+        <%= link_to "一覧に戻る", admins_contacts_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="col-4 offset-1 my-5">
+      <%= render "admins/admin/menu" %>
+    </div>
+  </div>
+</div>
