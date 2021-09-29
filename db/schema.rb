@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_040719) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: falses
+    t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -46,22 +46,22 @@ ActiveRecord::Schema.define(version: 2021_09_14_040719) do
   create_table "blog_comments", force: :cascade do |t|
     t.integer "blog_id", null: false
     t.integer "user_id", null: false
-    t.text "comment", default: "", null: false
+    t.text "comment", null: false
     t.float "evaluation", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.string "title", default: "", null: false
-    t.text "text", default: "", null: false
+    t.string "title", null: false
+    t.text "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "chat_rooms", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "room_name", default: "", null: false
+    t.string "room_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,16 +69,16 @@ ActiveRecord::Schema.define(version: 2021_09_14_040719) do
   create_table "chats", force: :cascade do |t|
     t.integer "chat_room_id", null: false
     t.integer "user_id", null: false
-    t.text "response", default: "", null: false
+    t.text "response", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "title", default: "", null: false
-    t.text "message", default: "", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "title", null: false
+    t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,17 +93,17 @@ ActiveRecord::Schema.define(version: 2021_09_14_040719) do
   create_table "post_comments", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
-    t.text "comment", default: "", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "title", null: false
+    t.string "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title", default: "", null: false
-    t.text "text", default: "", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

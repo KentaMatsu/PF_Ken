@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'search/search'
+
   devise_for :admins, controllers:{
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
     get '/search' => 'search#search'
 
-
     get '/users/check' => "users#check", as: 'users_check'
     patch '/users/hide' => "users#hide", as: 'users_hide'
 
@@ -29,8 +28,6 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-
-
 
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
