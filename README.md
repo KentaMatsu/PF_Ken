@@ -50,7 +50,7 @@
 <https://docs.google.com/spreadsheets/d/1uDWG5vBqNMeiZXxKAsDZjkP_QGBx8TO1cKacytLNG1g/edit#gid=0>
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：windows10
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
