@@ -30,6 +30,9 @@
         </div>
       </div>
       <% end %>
+        <div class="col text-center">
+        <%= paginate @posts %>
+      </div>
     </div>
     <div class="col-4 offset-1 my-5">
       <%= render "users/users/list", user: @user %>
