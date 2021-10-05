@@ -26,7 +26,7 @@
           コメント数：<%= @post.post_comments.count %>&emsp;&emsp;
           タグ：
           <% @post.tags.each do |tag| %>
-            <div class="label label-info"><%= tag.name %></div>&ensp;
+            <div class="badge badge-secondary"><%= tag.name %></div>&ensp;
           <% end %>
         </div>
       </div>
