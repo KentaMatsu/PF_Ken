@@ -3,7 +3,7 @@
     <div class="col-7 my-5">
       <div class="row mb-3">
         <h2>投稿一覧</h2>
-        <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-primary mx-5" %>
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-primary mx-5" %>
       </div>
       <%= render "users/search/search_form" %>
       <% @posts.each do |post| %>
