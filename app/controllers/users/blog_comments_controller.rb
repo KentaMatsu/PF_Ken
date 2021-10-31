@@ -23,8 +23,12 @@ class Users::BlogCommentsController < ApplicationController
   def destroy
     @blog = Blog.find(params[:blog_id])
     blog_comment = @blog.blog_comments.find(params[:id])
-    blog_comment.destroy
-    redirect_to blog_path(@blog)
+    if blog_comment.user_id != current_user.id
+      redirect_to blog_path(@blog)
+    else
+      blog_comment.destroy
+      redirect_to blog_path(@blog)
+    end
   end
 
   private
