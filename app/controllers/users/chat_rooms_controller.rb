@@ -24,8 +24,12 @@ class Users::ChatRoomsController < ApplicationController
 
   def destroy
     @chat_room = ChatRoom.find(params[:id])
-    @chat_room.destroy
-    redirect_to chat_rooms_path
+    if @chat_room.user_id != current_user.id
+      redirect_to chat_rooms_path
+    else
+      @chat_room.destroy
+      redirect_to chat_rooms_path
+    end
   end
 
   private

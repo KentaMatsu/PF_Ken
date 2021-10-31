@@ -12,19 +12,22 @@ class Users::BlogCommentsController < ApplicationController
     blog_comment = BlogComment.new(blog_comment_params)
     blog_comment.user_id = current_user.id
     blog_comment.blog_id = @blog.id
-    if blog_comment.save!
+    if blog_comment.save
       redirect_to blog_path(@blog)
     else
-      @blog = Blog.find(params[:id])
-      render 'users/blogs/show'
+      redirect_to blog_path(@blog)
     end
   end
 
   def destroy
     @blog = Blog.find(params[:blog_id])
     blog_comment = @blog.blog_comments.find(params[:id])
-    blog_comment.destroy
-    redirect_to blog_path(@blog)
+    if blog_comment.user_id != current_user.id
+      redirect_to blog_path(@blog)
+    else
+      blog_comment.destroy
+      redirect_to blog_path(@blog)
+    end
   end
 
   private
