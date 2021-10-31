@@ -33,11 +33,16 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user_id != current_user.id
+      redirect_to posts_path
+    end
   end
 
   def update
     @post = Post.find(params[:id])
-    # @post.post_image.purge # 画像の削除
+    if @post.user_id != current_user.id
+      redirect_to posts_path
+    end
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
@@ -47,8 +52,12 @@ class Users::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to user_path(@post.user)
+    if @post.user_id != current_user.id
+      redirect_to posts_path
+    else
+      @post.destroy
+      redirect_to user_path(@post.user)
+    end
   end
 
   private
