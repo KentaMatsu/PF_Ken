@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7 my-5">
+    <div class="col-xl-7 col-sm-10 my-5">
       <div class="row mb-3">
         <h2>投稿一覧</h2>
         <%= link_to "新規投稿", new_post_path, class: "btn btn-primary mx-5" %>
@@ -55,7 +55,7 @@
         <%= paginate @posts %>
       </div>
     </div>
-    <div class="col-4 offset-1 my-5">
+    <div class="col-xl-4 offset-1 col-sm-8 my-5">
       <%= render "users/users/list", user: @user %>
     </div>
   </div>

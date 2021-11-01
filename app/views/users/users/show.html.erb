@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7 my-5">
+    <div class="col-xl-7 col-sm-10 my-5">
       <h2 class="mb-4"><%= @user.user_name %>の投稿</h2>
       <% @posts.each do |post| %>
       <div class="utable row mb-5 border">
@@ -37,7 +37,7 @@
         <%= paginate @posts %>
       </div>
     </div>
-    <div class="col-4 offset-1 my-5">
+    <div class="col-xl-4 offset-1 col-sm-8 my-5">
       <%= render "users/users/list", user: @user %>
     </div>
   </div>
